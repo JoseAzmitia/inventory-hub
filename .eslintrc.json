@@ -28,6 +28,7 @@
       {
         "allow": ["StatusBar"]
       }
-    ]
+    ],
+    "no-console": "off"
   }
 }
