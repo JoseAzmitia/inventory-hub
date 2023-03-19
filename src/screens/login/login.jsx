@@ -10,10 +10,8 @@ function PantallaLogin() {
     // Lógica para realizar la autenticación
     if (username === 'rizostabasco@gmail.com' && password === 'Newton123') {
       console.log('Login successful');
-      // Aquí puedes navegar a la pantalla de inicio de tu aplicación
     } else {
       console.log('Invalid credentials');
-      // Aquí puedes mostrar un mensaje de error al usuario
     }
   };
 

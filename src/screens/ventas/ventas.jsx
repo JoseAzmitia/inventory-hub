@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 
 const styles = StyleSheet.create({
