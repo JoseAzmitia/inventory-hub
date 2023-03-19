@@ -1,7 +1,13 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import Navigation from './src/navigation';
+
+import { AuthProvider } from './src/context/AuthContext';
+import AppNav from './src/navigation/AppNav';
 
 export default function App() {
-  return <Navigation />;
+  return (
+    <AuthProvider>
+      <AppNav />
+    </AuthProvider>
+  );
 }

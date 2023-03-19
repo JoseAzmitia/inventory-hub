@@ -1,18 +1,17 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { AuthContext } from '../context/AuthContext';
 
 function PantallaLogin() {
+  const { login } = useContext(AuthContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
     // Lógica para realizar la autenticación
-    if (username === 'rizostabasco@gmail.com' && password === 'Newton123') {
-      console.log('Login successful');
-    } else {
-      console.log('Invalid credentials');
-    }
+    login();
   };
 
   return (
