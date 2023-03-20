@@ -4,11 +4,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // import { NavigationContainer } from '@react-navigation/native';
 
 // pantallas
-import PantallaSumario from '../screens/sumario';
-import PantallaProductos from '../screens/productos';
-import PantallaVentas from '../screens/ventas';
-import PantallaCarrito from '../screens/carrito';
-import Salir from '../screens/salir';
+import PantallaSumario from '../screens/Sumario';
+import PantallaProductos from '../screens/Productos';
+import PantallaVentas from '../screens/Ventas';
+import PantallaCarrito from '../screens/Carrito';
+import Salir from '../screens/Salir';
 
 const Tab = createBottomTabNavigator();
 

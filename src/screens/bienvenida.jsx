@@ -1,43 +1,40 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
-import Constants from 'expo-constants';
+import { Text, StyleSheet, SafeAreaView, View, Image } from 'react-native';
+import BtnApp from '../components/Btn';
+import human from '../assets/img/misc/Human.png';
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: Constants.statusBarHeight,
-    flexGrow: 1,
+  contenedor: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+  },
+  titulo: {
+    fontFamily: 'Inter-Bold',
+    fontWeight: 'bold',
+    fontSize: 30,
+    color: '#000000',
+    opacity: 0.5,
   },
 });
 
 function PantallaBienvenida({ navigation }) {
   return (
-    <View style={styles.container}>
-      <TouchableOpacity
-        style={{
-          backgroundColor: '#AD40AF',
-          padding: 20,
-          width: '90%',
-          borderRadius: 10,
-          marginBottom: 50,
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-        }}
+    <SafeAreaView style={styles.contenedor}>
+      <View style={{ marginTop: 50 }}>
+        <Text style={styles.titulo}>INVENTORY HUB</Text>
+      </View>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Image source={human} />
+      </View>
+      <BtnApp
+        texto="Comenzar"
+        icon="arrow-forward-ios"
         onPress={() => navigation.navigate('Login')}
-      >
-        <Text
-          style={{
-            color: 'white',
-            fontSize: 18,
-            textAlign: 'center',
-            fontWeight: 'bold',
-            fontFamily: 'Roboto',
-          }}
-        >
-          login
-        </Text>
-      </TouchableOpacity>
-    </View>
+      />
+    </SafeAreaView>
   );
 }
 

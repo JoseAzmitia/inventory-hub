@@ -22,7 +22,7 @@
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     //Previene que eslint tenga problemas con que los estilos se declaren después de usar la variable
     "no-use-before-define": ["error", { "variables": false }],
-    "react/prop-types": ["error", { "ignore": ["navigation", "navigation.navigate"] }],
+    "react/prop-types": ["off", "error", { "ignore": ["navigation", "navigation.navigate"] }],
     "react/style-prop-object": [
       "error",
       {
