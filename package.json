@@ -15,9 +15,11 @@
     "@react-navigation/stack": "^6.3.16",
     "expo": "^48.0.7",
     "expo-constants": "^14.2.1",
+    "expo-font": "^11.1.1",
+    "expo-splash-screen": "^0.18.1",
     "expo-status-bar": "~1.4.4",
     "react": "18.2.0",
-    "react-native": "0.71.3",
+    "react-native": "^0.71.3",
     "react-native-vector-icons": "^9.2.0"
   },
   "devDependencies": {

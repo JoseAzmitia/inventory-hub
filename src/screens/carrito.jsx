@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
 function PantallaCarrito() {
   return (
     <View style={styles.container}>
-      <Text>Carrito</Text>
+      <Text style={{ fontFamily: 'Inter-Regular' }}> Carrito</Text>
     </View>
   );
 }

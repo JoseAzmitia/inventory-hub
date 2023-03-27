@@ -15,8 +15,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
     textAlign: 'center',
-    fontWeight: 'bold',
-    fontFamily: 'Roboto-MediumItalic',
+    fontFamily: 'Inter-Bold',
   },
 });
 

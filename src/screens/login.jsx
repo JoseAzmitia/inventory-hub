@@ -44,8 +44,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
+    fontFamily: 'Inter-Bold',
     fontSize: 24,
-    fontWeight: 'bold',
     marginBottom: 24,
   },
   input: {
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   button: {
     width: '80%',
     height: 48,
-    backgroundColor: '#007AFF',
+    backgroundColor: '#62CEB4',
     borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',

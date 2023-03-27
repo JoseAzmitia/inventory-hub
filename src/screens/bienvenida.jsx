@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import { useCallback, useEffect } from 'react';
+
 import { Text, StyleSheet, SafeAreaView, View, Image } from 'react-native';
 import BtnApp from '../components/Btn';
 import human from '../assets/img/misc/Human.png';
@@ -9,11 +10,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#F8F8F8',
   },
   titulo: {
     fontFamily: 'Inter-Bold',
-    fontWeight: 'bold',
     fontSize: 30,
     color: '#000000',
     opacity: 0.5,
@@ -27,7 +27,7 @@ function PantallaBienvenida({ navigation }) {
         <Text style={styles.titulo}>INVENTORY HUB</Text>
       </View>
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Image source={human} />
+        <Image source={human} style={{ width: 250, height: 250 }} />
       </View>
       <BtnApp
         texto="Comenzar"

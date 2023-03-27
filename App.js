@@ -1,13 +1,43 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import * as React from 'react';
+import * as Font from 'expo-font';
 
 import { AuthProvider } from './src/context/AuthContext';
 import AppNav from './src/navigation/AppNav';
 
-export default function App() {
-  return (
-    <AuthProvider>
-      <AppNav />
-    </AuthProvider>
-  );
+const InterRegular = require('./src/assets/fonts/Inter-Regular.ttf');
+const InterBold = require('./src/assets/fonts/Inter-Bold.ttf');
+
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fontsLoaded: false,
+    };
+  }
+
+  // eslint-disable-next-line react/sort-comp
+  async loadFonts() {
+    await Font.loadAsync({
+      'Inter-Regular': InterRegular,
+      'Inter-Bold': InterBold,
+    });
+    this.setState({ fontsLoaded: true });
+  }
+
+  componentDidMount() {
+    this.loadFonts();
+  }
+
+  render() {
+    // eslint-disable-next-line react/destructuring-assignment
+    if (this.state.fontsLoaded) {
+      return (
+        <AuthProvider>
+          <AppNav />
+        </AuthProvider>
+      );
+    }
+    return null;
+  }
 }
