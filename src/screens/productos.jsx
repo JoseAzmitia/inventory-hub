@@ -1,19 +1,12 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import Constants from 'expo-constants';
-
-const styles = StyleSheet.create({
-  container: {
-    marginTop: Constants.statusBarHeight,
-    flexGrow: 1,
-  },
-});
+import globalStyles from '../styles/GlobalStyles';
 
 function PantallaProductos() {
   return (
-    <View style={styles.container}>
-      <Text>Productos</Text>
+    <View style={globalStyles.contenedor}>
+      <Text style={globalStyles.titleText}>Productos</Text>
     </View>
   );
 }

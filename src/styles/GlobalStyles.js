@@ -1,17 +1,19 @@
 import { StyleSheet } from 'react-native';
 
 const globalStyles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  contenedor: {
+    flexGrow: 1,
     backgroundColor: '#F8F8F8',
-    fontFamily: 'Inter-Regular',
   },
   titleText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#333',
+    marginTop: 23,
+    padding: 10,
+    fontSize: 20,
+    fontFamily: 'Inter-Regular',
+    color: '#828282',
+    textAlign: 'center',
+    borderBottomColor: '#828282',
+    borderBottomWidth: 0.5,
   },
   subtitleText: {
     fontSize: 16,
