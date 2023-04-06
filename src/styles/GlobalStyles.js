@@ -20,6 +20,17 @@ const globalStyles = StyleSheet.create({
     color: '#777',
     marginBottom: 10,
   },
+  infoSumario: {
+    fontSize: 24,
+    fontFamily: 'Inter-Bold',
+    maxWidth: '30%',
+    marginHorizontal: 35,
+    marginTop: 50,
+  },
+  contenedorSumario: {
+    marginVertical: 45,
+    flexDirection: 'row',
+  },
 });
 
 export default globalStyles;
