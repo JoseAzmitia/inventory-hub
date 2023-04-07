@@ -6,7 +6,7 @@ const globalStyles = StyleSheet.create({
     backgroundColor: '#F8F8F8',
   },
   titleText: {
-    marginTop: 23,
+    marginTop: 25,
     padding: 10,
     fontSize: 20,
     fontFamily: 'Inter-Regular',
