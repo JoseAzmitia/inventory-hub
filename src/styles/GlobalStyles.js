@@ -31,6 +31,21 @@ const globalStyles = StyleSheet.create({
     marginVertical: 45,
     flexDirection: 'row',
   },
+  contenedorProductos: {
+    flex: 1,
+  },
+  contenedorProductosRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 10,
+    width: '100%',
+  },
+  contenedorProductosColumn: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    paddingHorizontal: 10,
+    paddingVertical: 20,
+  },
 });
 
 export default globalStyles;
