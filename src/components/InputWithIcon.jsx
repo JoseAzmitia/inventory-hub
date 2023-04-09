@@ -3,7 +3,15 @@ import React from 'react';
 import { View, TextInput, Text, StyleSheet } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-function InputWithIcon({ title, icon, placeholder, value, onChangeText, secureTextEntry }) {
+function InputWithIcon({
+  title,
+  icon,
+  placeholder,
+  value,
+  onChangeText,
+  secureTextEntry,
+  numeric,
+}) {
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
@@ -14,6 +22,7 @@ function InputWithIcon({ title, icon, placeholder, value, onChangeText, secureTe
           value={value}
           onChangeText={onChangeText}
           secureTextEntry={secureTextEntry}
+          keyboardType={numeric ? 'numeric' : 'default'}
         />
       </View>
       <Ionicons name={icon} style={styles.icon} />

@@ -67,6 +67,13 @@ const globalStyles = StyleSheet.create({
     color: '#828282',
     maxWidth: 200,
   },
+  addProductContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    marginTop: 50,
+    gap: 20,
+  },
 });
 
 export default globalStyles;
