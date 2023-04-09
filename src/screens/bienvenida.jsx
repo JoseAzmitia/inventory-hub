@@ -29,11 +29,13 @@ function PantallaBienvenida({ navigation }) {
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Image source={human} style={{ width: 250, height: 250 }} />
       </View>
-      <BtnApp
-        texto="Comenzar"
-        secondIcon="arrow-forward-ios"
-        onPress={() => navigation.navigate('Login')}
-      />
+      <View style={{ marginBottom: 50 }}>
+        <BtnApp
+          texto="Comenzar"
+          secondIcon="arrow-forward-ios"
+          onPress={() => navigation.navigate('Login')}
+        />
+      </View>
     </SafeAreaView>
   );
 }

@@ -49,7 +49,7 @@ const globalStyles = StyleSheet.create({
   botonCarrito: {
     flexDirection: 'row',
     justifyContent: 'center',
-    paddingVertical: 25,
+    paddingVertical: 17.1,
     borderBottomColor: '#828282',
     borderBottomWidth: 0.5,
   },
