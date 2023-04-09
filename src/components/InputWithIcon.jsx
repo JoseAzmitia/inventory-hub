@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     alignItems: 'center',
     justifyContent: 'space-between',
-    borderWidth: 1,
+    borderWidth: 0.5,
     borderColor: '#ccc',
     borderRadius: 5,
     paddingHorizontal: 10,
@@ -36,18 +36,22 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 13,
     fontFamily: 'Inter-Regular',
+    color: '#4F4F4F',
     marginBottom: 3,
   },
   inputContainer: {
     alignItems: 'flex-start',
   },
   input: {
+    fontFamily: 'Inter-Regular',
     height: 20,
+    width: 250,
     marginBottom: 10,
+    color: '#333333',
   },
   icon: {
     fontSize: 24,
-    color: '#ccc',
+    color: '#4F4F4F',
     marginLeft: 10,
   },
 });

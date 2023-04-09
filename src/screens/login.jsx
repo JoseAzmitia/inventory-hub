@@ -29,9 +29,9 @@ function PantallaLogin() {
         onChangeText={setUsername}
       />
       <InputWithIcon
-        title="Contraseña"
+        title="Ingresa la contraseña"
         placeholder="password"
-        icon="eye-off-outline"
+        icon="ios-lock-closed-outline"
         value={password}
         onChangeText={setPassword}
         secureTextEntry
@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#F8F8F8',
   },
   title: {
     fontFamily: 'Inter-Regular',
@@ -75,7 +76,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttonText: {
-    color: '#fff',
+    fontFamily: 'Inter-Regular',
+    color: '#F2F2F2',
     fontSize: 16,
   },
   image: {
