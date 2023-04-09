@@ -1,4 +1,4 @@
-import { Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, StyleSheet, TouchableOpacity, View } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const styles = StyleSheet.create({
@@ -23,7 +23,9 @@ function BtnApp({ texto, icon, secondIcon, onPress }) {
   return (
     <TouchableOpacity style={styles.btn} onPress={onPress}>
       {icon && <MaterialIcons name={icon} size={24} color="#F2F2F2" />}
-      <Text style={styles.texto}>{texto}</Text>
+      <View style={{ flex: 1, justifyContent: 'center' }}>
+        <Text style={styles.texto}>{texto}</Text>
+      </View>
       {secondIcon && <MaterialIcons name={secondIcon} size={24} color="#F2F2F2" />}
     </TouchableOpacity>
   );
