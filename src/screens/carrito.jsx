@@ -6,7 +6,7 @@ import BtnApp from '../components/Btn';
 import ItemsCard from '../components/ItemsCart';
 
 function PantallaCarrito({ navigation }) {
-  const carrito = {}; // Objeto vacío de ejemplo
+  const carrito = { item1: 1 };
   const carritoLength = Object.keys(carrito).length;
   return (
     <View style={globalStyles.contenedor}>

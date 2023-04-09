@@ -5,7 +5,7 @@ import globalStyles from '../styles/GlobalStyles';
 import ActionButtons from '../components/ActionButtons';
 import ProductCard from '../components/ProductCard';
 
-function PantallaProductos() {
+function PantallaProductos({ navigation }) {
   const products = [
     {
       id: 1,
@@ -58,7 +58,7 @@ function PantallaProductos() {
         actionText="Agregar"
         actionIcon="add-circle"
         onPressOrder={() => console.log('Ordenando lista...')}
-        onPressAction={() => console.log('Agregando producto...')}
+        onPressAction={() => navigation.navigate('AddProductScreen')}
       />
       <ScrollView style={globalStyles.contenedorProductos}>
         <View style={globalStyles.contenedorProductosColumn}>

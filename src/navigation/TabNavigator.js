@@ -4,9 +4,9 @@ import React, { useContext } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import ProductStack from './ProductStack';
 // pantallas
 import PantallaSumario from '../screens/Sumario';
-import PantallaProductos from '../screens/Productos';
 import PantallaVentas from '../screens/Ventas';
 import PantallaCarrito from '../screens/Carrito';
 import Salir from '../screens/Salir';
@@ -35,10 +35,10 @@ function TabNavigator() {
         }}
       />
       <Tab.Screen
-        name="Productos"
-        component={PantallaProductos}
+        name="ProductStack"
+        component={ProductStack}
         options={{
-          title: 'Productos',
+          title: 'ProductStack',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="ios-grid-outline" size={size} color={color} />
           ),
