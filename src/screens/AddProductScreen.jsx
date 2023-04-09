@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import globalStyles from '../styles/GlobalStyles';
 import InputWithIcon from '../components/InputWithIcon';
+import ImagePickerComponent from '../components/ImagePicker';
+import BtnApp from '../components/Btn';
 
 function AddProductScreen() {
   const [productName, setProductName] = useState('');
@@ -44,6 +46,8 @@ function AddProductScreen() {
           numeric
           onChangeText={setPrice}
         />
+        <ImagePickerComponent />
+        <BtnApp texto="Guardar" onPress={() => console.log('Producto Agregado')} />
       </View>
     </View>
   );
