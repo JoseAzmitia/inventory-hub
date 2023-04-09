@@ -12,18 +12,19 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   texto: {
-    color: 'white',
+    fontFamily: 'Inter-Regular',
+    color: '#F2F2F2',
     fontSize: 18,
     textAlign: 'center',
-    fontFamily: 'Inter-Bold',
   },
 });
 
-function BtnApp({ texto, icon, onPress }) {
+function BtnApp({ texto, icon, secondIcon, onPress }) {
   return (
     <TouchableOpacity style={styles.btn} onPress={onPress}>
+      {icon && <MaterialIcons name={icon} size={24} color="#F2F2F2" />}
       <Text style={styles.texto}>{texto}</Text>
-      <MaterialIcons name={icon} size={22} color="#fff" />
+      {secondIcon && <MaterialIcons name={secondIcon} size={24} color="#F2F2F2" />}
     </TouchableOpacity>
   );
 }

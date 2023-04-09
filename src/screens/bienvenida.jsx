@@ -31,7 +31,7 @@ function PantallaBienvenida({ navigation }) {
       </View>
       <BtnApp
         texto="Comenzar"
-        icon="arrow-forward-ios"
+        secondIcon="arrow-forward-ios"
         onPress={() => navigation.navigate('Login')}
       />
     </SafeAreaView>
