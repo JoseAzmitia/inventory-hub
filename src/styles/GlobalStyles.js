@@ -46,6 +46,13 @@ const globalStyles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 20,
   },
+  botonCarrito: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    paddingVertical: 25,
+    borderBottomColor: '#828282',
+    borderBottomWidth: 0.5,
+  },
 });
 
 export default globalStyles;

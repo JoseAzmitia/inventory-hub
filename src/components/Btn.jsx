@@ -4,10 +4,9 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 const styles = StyleSheet.create({
   btn: {
     backgroundColor: '#62CEB4',
-    padding: 20,
+    padding: 15,
     width: '90%',
     borderRadius: 10,
-    marginBottom: 50,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
