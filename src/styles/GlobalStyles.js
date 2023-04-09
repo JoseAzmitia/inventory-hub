@@ -53,6 +53,20 @@ const globalStyles = StyleSheet.create({
     borderBottomColor: '#828282',
     borderBottomWidth: 0.5,
   },
+  tittleCartEmpty: {
+    padding: 30,
+    fontSize: 20,
+    fontFamily: 'Inter-Bold',
+    textAlign: 'center',
+  },
+  textCartEmpty: {
+    marginLeft: '25%',
+    fontSize: 15,
+    fontFamily: 'Inter-Regular',
+    textAlign: 'center',
+    color: '#828282',
+    maxWidth: 200,
+  },
 });
 
 export default globalStyles;
