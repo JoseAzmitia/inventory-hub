@@ -58,7 +58,7 @@ function PantallaProductos({ navigation }) {
         actionText="Agregar"
         actionIcon="add-circle"
         onPressOrder={() => console.log('Ordenando lista...')}
-        onPressAction={() => navigation.navigate('EditProductScreen')}
+        onPressAction={() => navigation.navigate('AddProductScreen')}
       />
       <ScrollView style={globalStyles.contenedorProductos}>
         <View style={globalStyles.contenedorProductosColumn}>

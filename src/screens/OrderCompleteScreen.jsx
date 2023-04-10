@@ -11,7 +11,7 @@ function OrderCompleteScreen({ navigation }) {
       <Text style={globalStyles.titleText}>Carrito</Text>
       <View style={globalStyles.botonCarrito}>
         <BtnApp
-          texto="Ir a inicio"
+          texto="Ir al catálogo"
           onPress={() =>
             navigation.reset({
               index: 0,
