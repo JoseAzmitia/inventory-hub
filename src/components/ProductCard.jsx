@@ -1,14 +1,14 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 
-function ProductCard({ image, name, price }) {
+function ProductCard({ image, name, price, onPress }) {
   return (
-    <View style={styles.card}>
+    <TouchableOpacity style={styles.card} onPress={onPress}>
       <Image style={styles.image} source={{ uri: image }} />
       <Text style={styles.price}>${price}</Text>
       <Text style={styles.name}>{name}</Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 

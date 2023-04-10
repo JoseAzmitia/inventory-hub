@@ -74,6 +74,22 @@ const globalStyles = StyleSheet.create({
     marginTop: 50,
     gap: 20,
   },
+  detailsProductContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  detailsButtonsContainer: {
+    marginTop: 80,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    gap: 40,
+    width: '100%',
+  },
+  detailsButton: {
+    width: 150,
+    marginLeft: 10,
+  },
 });
 
 export default globalStyles;

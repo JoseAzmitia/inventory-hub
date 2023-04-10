@@ -5,7 +5,7 @@ import globalStyles from '../styles/GlobalStyles';
 import SumarioCard from '../components/SumarioCard';
 import ProductCard from '../components/ProductCard';
 
-function PantallaSumario() {
+function PantallaSumario({ navigation }) {
   return (
     <View style={globalStyles.contenedor}>
       <Text style={globalStyles.titleText}>Sumario</Text>
@@ -22,6 +22,7 @@ function PantallaSumario() {
           image="https://static.wixstatic.com/media/3f119d_6c9d9e22c8cb4a0da762c3c15775d2b3~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg"
           name="Estilizador Gel Para Rizos"
           price={140}
+          onPress={() => navigation.navigate('ProductStack')}
         />
       </View>
     </View>

@@ -46,7 +46,12 @@ function EditProductScreen() {
           onChangeText={setPrice}
         />
         <BtnApp texto="Guardar" onPress={() => console.log('Producto Agregado')} />
-        <BtnApp texto="Eliminar" secondaryColor onPress={() => console.log('Eliminado')} />
+        <BtnApp
+          texto="Eliminar"
+          newColor
+          color="#FF7575"
+          onPress={() => console.log('Eliminado')}
+        />
       </View>
     </View>
   );

@@ -18,10 +18,10 @@ const styles = StyleSheet.create({
   },
 });
 
-function BtnApp({ texto, icon, secondIcon, onPress, secondaryColor }) {
+function BtnApp({ texto, icon, secondIcon, onPress, color, newColor }) {
   return (
     <TouchableOpacity
-      style={[styles.btn, { backgroundColor: secondaryColor ? '#FF7575' : '#62CEB4' }]}
+      style={[styles.btn, { backgroundColor: newColor ? color : '#62CEB4' }]}
       onPress={onPress}
     >
       {icon && <MaterialIcons name={icon} size={24} color="#F2F2F2" />}
