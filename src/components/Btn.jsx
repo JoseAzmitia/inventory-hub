@@ -18,9 +18,12 @@ const styles = StyleSheet.create({
   },
 });
 
-function BtnApp({ texto, icon, secondIcon, onPress }) {
+function BtnApp({ texto, icon, secondIcon, onPress, secondaryColor }) {
   return (
-    <TouchableOpacity style={styles.btn} onPress={onPress}>
+    <TouchableOpacity
+      style={[styles.btn, { backgroundColor: secondaryColor ? '#FF7575' : '#62CEB4' }]}
+      onPress={onPress}
+    >
       {icon && <MaterialIcons name={icon} size={24} color="#F2F2F2" />}
       <View style={{ flex: 1, justifyContent: 'center' }}>
         <Text style={styles.texto}>{texto}</Text>
