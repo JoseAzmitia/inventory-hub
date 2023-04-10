@@ -90,6 +90,32 @@ const globalStyles = StyleSheet.create({
     width: 150,
     marginLeft: 10,
   },
+  iconOrderComplete: {
+    marginVertical: 30,
+    textAlign: 'center',
+    fontSize: 128,
+    color: '#62CEB4',
+  },
+  orderNumberContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    gap: 3,
+  },
+  orderNumberTittle: {
+    fontSize: 14,
+    fontFamily: 'Inter-Bold',
+    color: '#2C2C2C',
+  },
+  orderNumber: {
+    fontSize: 14,
+    fontFamily: 'Inter-Bold',
+    color: '#555555',
+  },
+  cancelOrderButton: {
+    flexDirection: 'row',
+    marginVertical: 110,
+    justifyContent: 'center',
+  },
 });
 
 export default globalStyles;

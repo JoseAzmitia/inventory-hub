@@ -7,8 +7,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 // pantallas
 import PantallaSumario from '../screens/Sumario';
 import ProductStack from './ProductStack';
+import CartStack from './CartStack';
 import PantallaVentas from '../screens/Ventas';
-import PantallaCarrito from '../screens/Carrito';
 import Salir from '../screens/Salir';
 
 const Tab = createBottomTabNavigator();
@@ -56,7 +56,7 @@ function TabNavigator() {
       />
       <Tab.Screen
         name="Carrito"
-        component={PantallaCarrito}
+        component={CartStack}
         options={{
           title: 'Carrito',
           tabBarIcon: ({ color, size }) => (
