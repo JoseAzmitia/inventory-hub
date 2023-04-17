@@ -2,8 +2,8 @@
 import * as React from 'react';
 import * as Font from 'expo-font';
 
-import { AuthProvider } from './src/context/AuthContext';
-import AppNav from './src/navigation/AppNav';
+import { AuthProvider } from './src/context/authContext';
+import AppNav from './src/navigation/appNav';
 
 const InterRegular = require('./src/assets/fonts/Inter-Regular.ttf');
 const InterBold = require('./src/assets/fonts/Inter-Bold.ttf');

@@ -2,7 +2,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import PantallaCarrito from '../screens/Carrito';
+import PantallaCarrito from '../screens/CartScreen';
 import OrderCompleteScreen from '../screens/OrderCompleteScreen';
 
 const Stack = createStackNavigator();

@@ -2,8 +2,8 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import PantallaLogin from '../screens/Login';
-import PantallaBienvenida from '../screens/Bienvenida';
+import PantallaLogin from '../screens/LoginScreen';
+import PantallaBienvenida from '../screens/WelcomeScreen';
 
 const Stack = createStackNavigator();
 
