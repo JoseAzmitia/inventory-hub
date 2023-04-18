@@ -2,7 +2,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-// import { API_URL } from '../utils/config';
+import { API_URL } from '../utils/config';
 
 export const AuthContext = createContext();
 
@@ -14,7 +14,7 @@ export function AuthProvider({ children }) {
 
   const login = (email, password) => {
     axios
-      .post('http://192.168.0.16:8080/api/auth/login', {
+      .post(`${API_URL}/auth/login`, {
         email,
         password,
       })

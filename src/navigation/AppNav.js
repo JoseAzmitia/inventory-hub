@@ -1,7 +1,6 @@
 // eslint-disable-next-line no-unused-vars
-import React, { createContext, useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { View, ActivityIndicator } from 'react-native';
-
 import { NavigationContainer } from '@react-navigation/native';
 import AuthStack from './authStack';
 import { AuthContext } from '../context/authContext';
@@ -11,9 +10,11 @@ function AppNav() {
   const { isLoading, userToken } = useContext(AuthContext);
 
   if (isLoading) {
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <ActivityIndicator size="large" />
-    </View>;
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" color="#62CEB4" />
+      </View>
+    );
   }
 
   return (

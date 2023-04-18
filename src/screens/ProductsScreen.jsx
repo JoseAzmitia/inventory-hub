@@ -1,55 +1,30 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import globalStyles from '../styles/GlobalStyles';
 import ActionButtons from '../components/ActionButtons';
 import ProductCard from '../components/ProductCard';
+import { getAllProductsByUser } from '../services/productService';
+import { AuthContext } from '../context/authContext';
 
 function PantallaProductos({ navigation }) {
-  const products = [
-    {
-      id: 1,
-      name: 'Estilizador Gel Para Rizos',
-      price: 140,
-      image:
-        'https://static.wixstatic.com/media/3f119d_6c9d9e22c8cb4a0da762c3c15775d2b3~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg',
-    },
-    {
-      id: 2,
-      name: 'Estilizador Gel Para Rizos',
-      price: 140,
-      image:
-        'https://static.wixstatic.com/media/3f119d_6c9d9e22c8cb4a0da762c3c15775d2b3~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg',
-    },
-    {
-      id: 3,
-      name: 'Estilizador Gel Para Rizos',
-      price: 140,
-      image:
-        'https://static.wixstatic.com/media/3f119d_6c9d9e22c8cb4a0da762c3c15775d2b3~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg',
-    },
-    {
-      id: 4,
-      name: 'Estilizador Gel Para Rizos',
-      price: 140,
-      image:
-        'https://static.wixstatic.com/media/3f119d_6c9d9e22c8cb4a0da762c3c15775d2b3~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg',
-    },
-    {
-      id: 5,
-      name: 'Estilizador Gel Para Rizos',
-      price: 140,
-      image:
-        'https://static.wixstatic.com/media/3f119d_6c9d9e22c8cb4a0da762c3c15775d2b3~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg',
-    },
-    {
-      id: 6,
-      name: 'Estilizador Gel Para Rizos',
-      price: 140,
-      image:
-        'https://static.wixstatic.com/media/3f119d_6c9d9e22c8cb4a0da762c3c15775d2b3~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg',
-    },
-  ];
+  const { userInfo } = useContext(AuthContext);
+
+  const [products, setProducts] = useState([]);
+  const userId = userInfo.user;
+
+  useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        const result = await getAllProductsByUser(userId); // <-- debes reemplazar `userId` con el id del usuario actual
+        setProducts(result);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    loadProducts();
+  });
 
   return (
     <View style={globalStyles.contenedor}>
@@ -70,7 +45,7 @@ function PantallaProductos({ navigation }) {
                   key={product.id}
                   image={product.image}
                   name={product.name}
-                  price={product.price}
+                  price={product.price.toFixed(2)}
                   onPress={() => navigation.navigate('DetailsProductScreen')}
                 />
               ))}

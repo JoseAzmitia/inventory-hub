@@ -19,7 +19,7 @@ function PantallaSumario({ navigation }) {
       <View style={globalStyles.contenedorSumario}>
         <Text style={globalStyles.infoSumario}>Producto más vendido</Text>
         <ProductCard
-          image="https://static.wixstatic.com/media/3f119d_6c9d9e22c8cb4a0da762c3c15775d2b3~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg"
+          image="https://img.freepik.com/vector-premium/icono-linea-concepto-producto-ilustracion-elemento-simple-diseno-simbolo-esquema-concepto-producto-puede-utilizar-ui-ux-web-movil_159242-2076.jpg"
           name="Estilizador Gel Para Rizos"
           price={140}
           onPress={() => navigation.navigate('ProductStack')}
