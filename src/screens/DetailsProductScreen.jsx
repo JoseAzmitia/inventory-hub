@@ -5,16 +5,17 @@ import globalStyles from '../styles/GlobalStyles';
 import DetailsProductCard from '../components/DetailsProductCard';
 import BtnApp from '../components/Btn';
 
-function DetailsProductScreen({ navigation }) {
+function DetailsProductScreen({ route, navigation }) {
+  const { product } = route.params;
   return (
     <View style={globalStyles.contenedor}>
       <Text style={globalStyles.titleText}>Detalles del Producto</Text>
       <View style={globalStyles.detailsProductContainer}>
         <DetailsProductCard
-          image="https://static.wixstatic.com/media/3f119d_6c9d9e22c8cb4a0da762c3c15775d2b3~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg"
-          name="Estilizador Gel Para Rizos"
-          price={140}
-          stock={10}
+          image={product.image}
+          name={product.name}
+          price={product.price}
+          stock={product.stock}
         />
         <View style={globalStyles.detailsButtonsContainer}>
           <View style={globalStyles.detailsButton}>
@@ -23,7 +24,7 @@ function DetailsProductScreen({ navigation }) {
               icon="edit"
               newColor
               color="#828282"
-              onPress={() => navigation.navigate('EditProductScreen')}
+              onPress={() => navigation.navigate('EditProductScreen', { product })}
             />
           </View>
           <View style={globalStyles.detailsButton}>

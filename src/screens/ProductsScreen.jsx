@@ -46,7 +46,7 @@ function PantallaProductos({ navigation }) {
                   image={product.image}
                   name={product.name}
                   price={product.price.toFixed(2)}
-                  onPress={() => navigation.navigate('DetailsProductScreen')}
+                  onPress={() => navigation.navigate('DetailsProductScreen', { product })}
                 />
               ))}
             </View>
