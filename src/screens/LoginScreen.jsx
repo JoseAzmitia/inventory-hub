@@ -9,12 +9,12 @@ const logo = require('../assets/img/misc/logo.png');
 
 function PantallaLogin() {
   const { login } = useContext(AuthContext);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
 
   const handleLogin = () => {
     // Lógica para realizar la autenticación
-    login();
+    login(email, password);
   };
 
   return (
@@ -25,8 +25,8 @@ function PantallaLogin() {
         title="Ingresa el correo"
         placeholder="example@mail.com"
         icon="ios-mail-outline"
-        value={username}
-        onChangeText={setUsername}
+        value={email}
+        onChangeText={setEmail}
       />
       <InputWithIcon
         title="Ingresa la contraseña"
