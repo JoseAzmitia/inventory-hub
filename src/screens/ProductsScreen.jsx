@@ -11,12 +11,13 @@ function PantallaProductos({ navigation }) {
   const { userInfo } = useContext(AuthContext);
 
   const [products, setProducts] = useState([]);
+  const [orderType, setOrderType] = useState(null);
   const userId = userInfo.user;
 
   useEffect(() => {
     const loadProducts = async () => {
       try {
-        const result = await getAllProductsByUser(userId); // <-- debes reemplazar `userId` con el id del usuario actual
+        const result = await getAllProductsByUser(userId);
         setProducts(result);
       } catch (error) {
         console.error(error);
@@ -24,7 +25,27 @@ function PantallaProductos({ navigation }) {
     };
 
     loadProducts();
-  });
+  }, [userId]);
+
+  const handleOrderOptionPress = (value) => {
+    setOrderType(value);
+  };
+
+  // Función para ordenar los productos según el tipo de orden seleccionado
+  const orderedProducts = () => {
+    switch (orderType) {
+      case 'price_desc':
+        return [...products].sort((a, b) => b.price - a.price);
+      case 'price_asc':
+        return [...products].sort((a, b) => a.price - b.price);
+      case 'name_asc':
+        return [...products].sort((a, b) => a.name.localeCompare(b.name));
+      case 'name_desc':
+        return [...products].sort((a, b) => b.name.localeCompare(a.name));
+      default:
+        return products;
+    }
+  };
 
   return (
     <View style={globalStyles.contenedor}>
@@ -32,7 +53,7 @@ function PantallaProductos({ navigation }) {
       <ActionButtons
         actionText="Agregar"
         actionIcon="add-circle"
-        onPressOrder={() => console.log('Ordenando lista...')}
+        handleOrderOptionPress={handleOrderOptionPress}
         onPressAction={() => navigation.navigate('AddProductScreen')}
       />
       <ScrollView style={globalStyles.contenedorProductos}>
@@ -40,15 +61,17 @@ function PantallaProductos({ navigation }) {
           {[...Array(Math.ceil(products.length / 2))].map((_, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <View style={globalStyles.contenedorProductosRow} key={index}>
-              {products.slice(index * 2, index * 2 + 2).map((product) => (
-                <ProductCard
-                  key={product.id}
-                  image={product.image}
-                  name={product.name}
-                  price={product.price.toFixed(2)}
-                  onPress={() => navigation.navigate('DetailsProductScreen', { product })}
-                />
-              ))}
+              {orderedProducts()
+                .slice(index * 2, index * 2 + 2)
+                .map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    image={product.image}
+                    name={product.name}
+                    price={product.price.toFixed(2)}
+                    onPress={() => navigation.navigate('DetailsProductScreen', { product })}
+                  />
+                ))}
             </View>
           ))}
         </View>

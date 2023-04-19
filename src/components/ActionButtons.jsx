@@ -1,16 +1,51 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import ModalDropdown from 'react-native-modal-dropdown';
 
-function ActionButtons({ actionText, actionIcon, onPressOrder, onPressAction }) {
+function ActionButtons({ actionText, actionIcon, handleOrderOptionPress, onPressAction }) {
+  // eslint-disable-next-line no-unused-vars
+  const [orderType, setOrderType] = useState(null);
+
+  const orderOptions = ['Mayor precio', 'Menor precio', 'Nombre (A-Z)', 'Nombre (Z-A)'];
+
+  function convertToValue(option) {
+    switch (option) {
+      case 'Mayor precio':
+        return 'price_desc';
+      case 'Menor precio':
+        return 'price_asc';
+      case 'Nombre (A-Z)':
+        return 'name_asc';
+      case 'Nombre (Z-A)':
+        return 'name_desc';
+      default:
+        return null; // Opcional: devuelve null si la opción no es válida
+    }
+  }
+
+  const handleOrderOptionPressLocal = (value) => {
+    console.log(orderOptions[value]);
+    const newValue = convertToValue(orderOptions[value]);
+    setOrderType(orderOptions[value]);
+    console.log(`Ordenando lista por ${newValue}`);
+    handleOrderOptionPress(newValue);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.actionContainer}>
         <Text style={styles.text}>Ordenar</Text>
-        <TouchableOpacity style={styles.button} onPress={onPressOrder}>
+        <ModalDropdown
+          style={styles.button}
+          options={orderOptions}
+          renderRow={(option) => <Text style={styles.dropdownOption}>{option}</Text>}
+          onSelect={(value) => handleOrderOptionPressLocal(value)}
+          dropdownStyle={styles.dropdown}
+        >
           <Ionicons name="chevron-down" style={styles.firstIcon} />
-        </TouchableOpacity>
+        </ModalDropdown>
       </View>
       <View style={styles.actionContainer}>
         <Text style={styles.text}>{actionText}</Text>
@@ -56,6 +91,20 @@ const styles = StyleSheet.create({
   secondIcon: {
     fontSize: 24,
     color: '#62CEB4',
+  },
+  dropdown: {
+    marginLeft: -70,
+    marginTop: -25,
+    width: 90,
+    height: 150,
+    zIndex: -1,
+  },
+  dropdownOption: {
+    fontSize: 14,
+    fontFamily: 'Inter-Regular',
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    backgroundColor: '#fff',
   },
 });
 

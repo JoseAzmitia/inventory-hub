@@ -5,11 +5,12 @@ import globalStyles from '../styles/GlobalStyles';
 import InputWithIcon from '../components/InputWithIcon';
 import BtnApp from '../components/Btn';
 
-function EditProductScreen() {
-  const [productName, setProductName] = useState('');
-  const [category, setCategory] = useState('');
-  const [stock, setStock] = useState('');
-  const [price, setPrice] = useState('');
+function EditProductScreen({ route }) {
+  const { product } = route.params;
+  const [productName, setProductName] = useState(product.name);
+  const [category, setCategory] = useState(product.category);
+  const [stock, setStock] = useState(product.stock);
+  const [price, setPrice] = useState(product.price);
 
   return (
     <View style={globalStyles.contenedor}>
@@ -33,7 +34,7 @@ function EditProductScreen() {
           title="Ingresa la cantidad"
           placeholder="Stock"
           icon="ios-reader-outline"
-          value={stock}
+          value={stock.toString()}
           numeric
           onChangeText={setStock}
         />
@@ -41,11 +42,11 @@ function EditProductScreen() {
           title="Ingresa la cantidad"
           placeholder="Precio"
           icon="ios-pricetag-outline"
-          value={price}
+          value={price.toString()}
           numeric
           onChangeText={setPrice}
         />
-        <BtnApp texto="Guardar" onPress={() => console.log('Producto Agregado')} />
+        <BtnApp texto="Guardar" onPress={() => console.log('Producto Guardado')} />
         <BtnApp
           texto="Eliminar"
           newColor
