@@ -4,13 +4,40 @@ import { Text, View } from 'react-native';
 import globalStyles from '../styles/GlobalStyles';
 import InputWithIcon from '../components/InputWithIcon';
 import BtnApp from '../components/Btn';
+import { deleteProduct, updateProduct } from '../services/productService';
 
-function EditProductScreen({ route }) {
+function EditProductScreen({ navigation, route }) {
   const { product } = route.params;
   const [productName, setProductName] = useState(product.name);
   const [category, setCategory] = useState(product.category);
   const [stock, setStock] = useState(product.stock);
   const [price, setPrice] = useState(product.price);
+
+  const handleDelete = async () => {
+    try {
+      await deleteProduct(product.id);
+      console.log('producto eliminado');
+      navigation.navigate('Productos', { updateProductos: Math.random() });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleSave = async () => {
+    try {
+      const updatedProduct = {
+        name: productName,
+        category,
+        stock,
+        price,
+      };
+      await updateProduct(product.id, updatedProduct);
+      console.log('Producto editado');
+      navigation.navigate('Productos', { updateProductos: Math.random() });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <View style={globalStyles.contenedor}>
@@ -46,13 +73,8 @@ function EditProductScreen({ route }) {
           numeric
           onChangeText={setPrice}
         />
-        <BtnApp texto="Guardar" onPress={() => console.log('Producto Guardado')} />
-        <BtnApp
-          texto="Eliminar"
-          newColor
-          color="#FF7575"
-          onPress={() => console.log('Eliminado')}
-        />
+        <BtnApp texto="Guardar" onPress={handleSave} />
+        <BtnApp texto="Eliminar" newColor color="#FF7575" onPress={handleDelete} />
       </View>
     </View>
   );

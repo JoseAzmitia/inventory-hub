@@ -7,25 +7,36 @@ import ProductCard from '../components/ProductCard';
 import { getAllProductsByUser } from '../services/productService';
 import { AuthContext } from '../context/authContext';
 
-function PantallaProductos({ navigation }) {
+function PantallaProductos({ navigation, route }) {
   const { userInfo } = useContext(AuthContext);
 
   const [products, setProducts] = useState([]);
   const [orderType, setOrderType] = useState(null);
+  const [productsUpdated, setProductsUpdated] = useState(false);
   const userId = userInfo.user;
+  const { updateProductos } = route.params ?? {};
+
+  useEffect(() => {
+    setProductsUpdated(updateProductos);
+  }, [updateProductos]);
+
+  const handleAddProductPress = () => {
+    navigation.navigate('AddProductScreen');
+  };
 
   useEffect(() => {
     const loadProducts = async () => {
       try {
         const result = await getAllProductsByUser(userId);
         setProducts(result);
+        console.log('api llamada');
       } catch (error) {
         console.error(error);
       }
     };
 
     loadProducts();
-  }, [userId]);
+  }, [userId, productsUpdated]);
 
   const handleOrderOptionPress = (value) => {
     setOrderType(value);
@@ -54,7 +65,7 @@ function PantallaProductos({ navigation }) {
         actionText="Agregar"
         actionIcon="add-circle"
         handleOrderOptionPress={handleOrderOptionPress}
-        onPressAction={() => navigation.navigate('AddProductScreen')}
+        onPressAction={handleAddProductPress}
       />
       <ScrollView style={globalStyles.contenedorProductos}>
         <View style={globalStyles.contenedorProductosColumn}>

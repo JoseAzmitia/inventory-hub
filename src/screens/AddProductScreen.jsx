@@ -1,16 +1,40 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Text, View } from 'react-native';
+import { AuthContext } from '../context/authContext';
 import globalStyles from '../styles/GlobalStyles';
 import InputWithIcon from '../components/InputWithIcon';
 import ImagePickerComponent from '../components/ImagePicker';
 import BtnApp from '../components/Btn';
+import { createProduct } from '../services/productService';
 
-function AddProductScreen() {
+function AddProductScreen({ navigation }) {
+  const { userInfo } = useContext(AuthContext);
+  const userId = userInfo.user;
+  const image =
+    'https://img.freepik.com/vector-premium/icono-linea-concepto-producto-ilustracion-elemento-simple-diseno-simbolo-esquema-concepto-producto-puede-utilizar-ui-ux-web-movil_159242-2076.jpg';
   const [productName, setProductName] = useState('');
   const [category, setCategory] = useState('');
   const [stock, setStock] = useState('');
   const [price, setPrice] = useState('');
+
+  const handleSaveProduct = async () => {
+    try {
+      const product = {
+        name: productName,
+        category,
+        stock,
+        price,
+        userId,
+        image,
+      };
+      await createProduct(product); // Llamar la función createProduct
+      console.log('Producto agregado');
+      navigation.navigate('Productos', { updateProductos: Math.random() });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <View style={globalStyles.contenedor}>
@@ -47,7 +71,7 @@ function AddProductScreen() {
           onChangeText={setPrice}
         />
         <ImagePickerComponent />
-        <BtnApp texto="Guardar" onPress={() => console.log('Producto Agregado')} />
+        <BtnApp texto="Guardar" onPress={handleSaveProduct} />
       </View>
     </View>
   );
