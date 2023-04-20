@@ -1,12 +1,20 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useContext } from 'react';
 import { Text, View } from 'react-native';
 import globalStyles from '../styles/GlobalStyles';
 import DetailsProductCard from '../components/DetailsProductCard';
 import BtnApp from '../components/Btn';
+import { CartContext } from '../context/cartContext';
 
 function DetailsProductScreen({ route, navigation }) {
   const { product } = route.params;
+  const { addToCart } = useContext(CartContext);
+
+  const handleAdd = () => {
+    addToCart(product);
+    navigation.navigate('Carrito');
+  };
+
   return (
     <View style={globalStyles.contenedor}>
       <Text style={globalStyles.titleText}>Detalles del Producto</Text>
@@ -28,11 +36,7 @@ function DetailsProductScreen({ route, navigation }) {
             />
           </View>
           <View style={globalStyles.detailsButton}>
-            <BtnApp
-              texto="Agregar"
-              icon="add-shopping-cart"
-              onPress={() => console.log('Producto agregado')}
-            />
+            <BtnApp texto="Agregar" icon="add-shopping-cart" onPress={handleAdd} />
           </View>
         </View>
       </View>

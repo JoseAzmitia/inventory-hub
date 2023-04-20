@@ -29,7 +29,7 @@ function PantallaProductos({ navigation, route }) {
       try {
         const result = await getAllProductsByUser(userId);
         setProducts(result);
-        console.log('api llamada');
+        console.log('api llamada en productsScreen');
       } catch (error) {
         console.error(error);
         console.log('Función llamada en productsScreen');

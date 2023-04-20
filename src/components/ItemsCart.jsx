@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-function ItemsCard({ image, name, price, quantity }) {
+function ItemsCard({ image, name, price, quantity, onPress }) {
   const [pressed, setPressed] = useState(false);
 
   const handlePressIn = () => {
@@ -22,14 +22,14 @@ function ItemsCard({ image, name, price, quantity }) {
         <Text style={styles.name}>{name}</Text>
         <View style={styles.dataRow}>
           <Text style={styles.price}>Cantidad: {quantity}</Text>
-          <TouchableOpacity style={styles.touchIconQuantity}>
+          {/* <TouchableOpacity style={styles.touchIconQuantity}>
             <Ionicons name="chevron-down" style={styles.quantityIcon} />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </View>
       <TouchableOpacity
         style={styles.touchIcon}
-        onPress={() => console.log('Pressed!')}
+        onPress={onPress}
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
       >
@@ -82,11 +82,11 @@ const styles = StyleSheet.create({
     color: '#2C2C2C',
   },
   closeIcon: {
-    fontSize: 24,
+    fontSize: 32,
     color: '#F7E8E8',
   },
   touchIcon: {
-    marginLeft: 70,
+    marginLeft: 80,
     height: 24,
   },
   touchIconQuantity: {

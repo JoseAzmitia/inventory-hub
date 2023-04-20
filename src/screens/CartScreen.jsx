@@ -1,14 +1,20 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useContext } from 'react';
 import { Text, View } from 'react-native';
 
 import globalStyles from '../styles/GlobalStyles';
 import BtnApp from '../components/Btn';
 import ItemsCard from '../components/ItemsCart';
+import { CartContext } from '../context/cartContext';
 
 function PantallaCarrito({ navigation }) {
-  const carrito = { item1: 1 };
-  const carritoLength = Object.keys(carrito).length;
+  const { cartItems, calculateTotal, removeFromCart } = useContext(CartContext); // Obtener los elementos del carrito del contexto
+  const carritoLength = cartItems.length;
+
+  const handleRemove = (item) => {
+    removeFromCart(item);
+  };
+
   return (
     <View style={globalStyles.contenedor}>
       <Text style={globalStyles.titleText}>Carrito</Text>
@@ -16,24 +22,23 @@ function PantallaCarrito({ navigation }) {
         <>
           <View style={globalStyles.botonCarrito}>
             <BtnApp
-              texto="Total: $420"
+              texto={`Total: $${calculateTotal(cartItems).toFixed(2)}`}
               icon="monetization-on"
               secondIcon="arrow-forward"
               onPress={() => navigation.replace('OrderCompleteScreen')}
             />
           </View>
-          <ItemsCard
-            image="https://static.wixstatic.com/media/3f119d_6c9d9e22c8cb4a0da762c3c15775d2b3~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg"
-            name="Estilizador Gel Para Rizos"
-            price="280"
-            quantity={3}
-          />
-          <ItemsCard
-            image="https://static.wixstatic.com/media/3f119d_6c9d9e22c8cb4a0da762c3c15775d2b3~mv2.jpg/v1/fit/w_500,h_500,q_90/file.jpg"
-            name="Estilizador Gel Para Rizos"
-            price="280"
-            quantity={3}
-          />
+          {/* Iterar sobre los elementos del carrito y crear un componente ItemsCard para cada uno */}
+          {cartItems.map((item) => (
+            <ItemsCard
+              key={item.id} // Es importante que cada componente tenga una key única
+              image={item.image}
+              name={item.name}
+              price={item.price}
+              quantity={item.quantity}
+              onPress={() => handleRemove(item)}
+            />
+          ))}
         </>
       ) : (
         <>
