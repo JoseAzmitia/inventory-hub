@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as Font from 'expo-font';
 
 import { AuthProvider } from './src/context/authContext';
+import { CartProvider } from './src/context/cartContext';
 import AppNav from './src/navigation/appNav';
 
 const InterRegular = require('./src/assets/fonts/Inter-Regular.ttf');
@@ -34,7 +35,9 @@ export default class App extends React.Component {
     if (this.state.fontsLoaded) {
       return (
         <AuthProvider>
-          <AppNav />
+          <CartProvider>
+            <AppNav />
+          </CartProvider>
         </AuthProvider>
       );
     }
