@@ -1,18 +1,37 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Text, View } from 'react-native';
 
+import Modal from 'react-native-modal';
 import globalStyles from '../styles/GlobalStyles';
 import BtnApp from '../components/Btn';
 import ItemsCard from '../components/ItemsCart';
 import { CartContext } from '../context/cartContext';
+import { AuthContext } from '../context/authContext';
+import { createOrder } from '../services/orderService';
 
 function PantallaCarrito({ navigation }) {
-  const { cartItems, calculateTotal, removeFromCart } = useContext(CartContext); // Obtener los elementos del carrito del contexto
+  const { cartItems, calculateTotal, removeFromCart, clearCart } = useContext(CartContext); // Obtener los elementos del carrito del contexto
   const carritoLength = cartItems.length;
+  const { userInfo } = useContext(AuthContext);
+  const userId = userInfo.user;
+  const [modalOrder, setModalOrder] = useState(false);
 
   const handleRemove = (item) => {
     removeFromCart(item);
+  };
+
+  const handleCreateOrder = async () => {
+    try {
+      const products = cartItems;
+      const response = await createOrder(userId, products);
+      if (response && response.id) {
+        clearCart();
+        navigation.replace('OrderCompleteScreen', { orderId: response.id });
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -25,7 +44,7 @@ function PantallaCarrito({ navigation }) {
               texto={`Total: $${calculateTotal(cartItems).toFixed(2)}`}
               icon="monetization-on"
               secondIcon="arrow-forward"
-              onPress={() => navigation.replace('OrderCompleteScreen')}
+              onPress={() => setModalOrder(true)}
             />
           </View>
           {/* Iterar sobre los elementos del carrito y crear un componente ItemsCard para cada uno */}
@@ -51,6 +70,19 @@ function PantallaCarrito({ navigation }) {
           </Text>
         </>
       )}
+      <Modal isVisible={modalOrder}>
+        <View style={globalStyles.modalContainer}>
+          <Text style={globalStyles.modalText}>¿Confirma crear la orden?</Text>
+          <BtnApp
+            texto="Sí, crear orden"
+            onPress={() => {
+              setModalOrder(false);
+              handleCreateOrder();
+            }}
+          />
+          <BtnApp texto="Cancelar" newColor color="#FF7575" onPress={() => setModalOrder(false)} />
+        </View>
+      </Modal>
     </View>
   );
 }
