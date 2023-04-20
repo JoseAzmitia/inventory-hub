@@ -1,10 +1,12 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Text, View } from 'react-native';
+import Modal from 'react-native-modal';
 import globalStyles from '../styles/GlobalStyles';
 import InputWithIcon from '../components/InputWithIcon';
 import BtnApp from '../components/Btn';
 import { deleteProduct, updateProduct } from '../services/productService';
+import { CartContext } from '../context/cartContext';
 
 function EditProductScreen({ navigation, route }) {
   const { product } = route.params;
@@ -12,10 +14,14 @@ function EditProductScreen({ navigation, route }) {
   const [category, setCategory] = useState(product.category);
   const [stock, setStock] = useState(product.stock);
   const [price, setPrice] = useState(product.price);
+  const { removeFromCart } = useContext(CartContext);
+  const [modalEdit, setModalEdit] = useState(false);
+  const [modalDelete, setModalDelete] = useState(false);
 
   const handleDelete = async () => {
     try {
       await deleteProduct(product.id);
+      removeFromCart(product);
       console.log('producto eliminado');
       navigation.navigate('Productos', { updateProductos: Math.random() });
     } catch (error) {
@@ -73,8 +79,39 @@ function EditProductScreen({ navigation, route }) {
           numeric
           onChangeText={setPrice}
         />
-        <BtnApp texto="Guardar" onPress={handleSave} />
-        <BtnApp texto="Eliminar" newColor color="#FF7575" onPress={handleDelete} />
+        <Modal isVisible={modalEdit}>
+          <View style={globalStyles.modalContainer}>
+            <Text style={globalStyles.modalText}>¿Confirma editar este producto?</Text>
+            <BtnApp
+              texto="Sí, editar producto"
+              onPress={() => {
+                setModalEdit(false);
+                handleSave();
+              }}
+            />
+            <BtnApp texto="Cancelar" newColor color="#FF7575" onPress={() => setModalEdit(false)} />
+          </View>
+        </Modal>
+        <Modal isVisible={modalDelete}>
+          <View style={globalStyles.modalContainer}>
+            <Text style={globalStyles.modalText}>¿Confirma eliminar este producto?</Text>
+            <BtnApp
+              texto="Sí, eliminar producto"
+              onPress={() => {
+                setModalDelete(false);
+                handleDelete();
+              }}
+            />
+            <BtnApp
+              texto="Cancelar"
+              newColor
+              color="#FF7575"
+              onPress={() => setModalDelete(false)}
+            />
+          </View>
+        </Modal>
+        <BtnApp texto="Guardar" onPress={() => setModalEdit(true)} />
+        <BtnApp texto="Eliminar" newColor color="#FF7575" onPress={() => setModalDelete(true)} />
       </View>
     </View>
   );

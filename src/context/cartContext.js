@@ -1,9 +1,27 @@
-import React, { createContext, useState, useCallback } from 'react';
+import React, { createContext, useState, useCallback, useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const CartContext = createContext();
 
 function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    const getCartItems = async () => {
+      const storedCartItems = await AsyncStorage.getItem('cartItems');
+      if (storedCartItems) {
+        setCartItems(JSON.parse(storedCartItems));
+      }
+    };
+    getCartItems();
+  }, []);
+
+  useEffect(() => {
+    const storeCartItems = async () => {
+      await AsyncStorage.setItem('cartItems', JSON.stringify(cartItems));
+    };
+    storeCartItems();
+  }, [cartItems]);
 
   const removeFromCart = useCallback((product) => {
     setCartItems((prevCartItems) => prevCartItems.filter((item) => item.id !== product.id));

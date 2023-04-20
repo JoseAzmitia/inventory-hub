@@ -73,6 +73,8 @@ const styles = StyleSheet.create({
   dataColumn: {
     flexDirection: 'column',
     gap: 4,
+    width: 200,
+    maxWidth: 200,
   },
   dataRow: {
     flexDirection: 'row',
@@ -86,7 +88,7 @@ const styles = StyleSheet.create({
     color: '#F7E8E8',
   },
   touchIcon: {
-    marginLeft: 80,
+    marginLeft: 10,
     height: 24,
   },
   touchIconQuantity: {
@@ -94,6 +96,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
     height: 24,
     width: 24,
+    backgroundColor: 'green',
   },
 });
 
