@@ -32,6 +32,7 @@ function PantallaProductos({ navigation, route }) {
         console.log('api llamada');
       } catch (error) {
         console.error(error);
+        console.log('Función llamada en productsScreen');
       }
     };
 

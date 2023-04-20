@@ -1,10 +1,11 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useContext } from 'react';
 import { Text, View } from 'react-native';
+import Modal from 'react-native-modal';
 import { AuthContext } from '../context/authContext';
 import globalStyles from '../styles/GlobalStyles';
 import InputWithIcon from '../components/InputWithIcon';
-import ImagePickerComponent from '../components/ImagePicker';
+// import ImagePickerComponent from '../components/ImagePicker';
 import BtnApp from '../components/Btn';
 import { createProduct } from '../services/productService';
 
@@ -17,6 +18,7 @@ function AddProductScreen({ navigation }) {
   const [category, setCategory] = useState('');
   const [stock, setStock] = useState('');
   const [price, setPrice] = useState('');
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleSaveProduct = async () => {
     try {
@@ -33,6 +35,7 @@ function AddProductScreen({ navigation }) {
       navigation.navigate('Productos', { updateProductos: Math.random() });
     } catch (error) {
       console.error(error);
+      console.log('Función llamada en AddProduct');
     }
   };
 
@@ -70,8 +73,28 @@ function AddProductScreen({ navigation }) {
           numeric
           onChangeText={setPrice}
         />
-        <ImagePickerComponent />
-        <BtnApp texto="Guardar" onPress={handleSaveProduct} />
+        {/* <ImagePickerComponent /> */}
+        <Modal isVisible={isModalVisible}>
+          <View style={globalStyles.modalContainer}>
+            <Text style={globalStyles.modalText}>
+              ¿Está seguro de que desea agregar este producto?
+            </Text>
+            <BtnApp
+              texto="Sí, agregar producto"
+              onPress={() => {
+                setIsModalVisible(false);
+                handleSaveProduct();
+              }}
+            />
+            <BtnApp
+              texto="Cancelar"
+              newColor
+              color="#FF7575"
+              onPress={() => setIsModalVisible(false)}
+            />
+          </View>
+        </Modal>
+        <BtnApp texto="Agregar" onPress={() => setIsModalVisible(true)} />
       </View>
     </View>
   );

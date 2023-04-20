@@ -116,6 +116,20 @@ const globalStyles = StyleSheet.create({
     marginVertical: 110,
     justifyContent: 'center',
   },
+  modalContainer: {
+    backgroundColor: 'white',
+    borderRadius: 8,
+    padding: 20,
+    alignItems: 'center',
+    flexDirection: 'column',
+    gap: 10,
+  },
+  modalText: {
+    fontSize: 18,
+    fontFamily: 'Inter-Bold',
+    textAlign: 'center',
+    marginBottom: 20,
+  },
 });
 
 export default globalStyles;
