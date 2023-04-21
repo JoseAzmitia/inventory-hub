@@ -1,29 +1,74 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Text, View } from 'react-native';
 import globalStyles from '../styles/GlobalStyles';
 import SumarioCard from '../components/SumarioCard';
-import ProductCard from '../components/ProductCard';
+import getSummaryByUserId from '../services/summaryService';
+import { AuthContext } from '../context/authContext';
+import BtnApp from '../components/Btn';
 
-function PantallaSumario({ navigation }) {
+function PantallaSumario() {
+  const { userInfo } = useContext(AuthContext);
+  const userId = userInfo.user;
+  const [summary, setSummary] = useState(null);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  // Definir la función fetchSummary en el scope global
+  const fetchSummary = async () => {
+    const fetchedSummary = await getSummaryByUserId(userId);
+    console.log('Api llamada en summaryScreen');
+    setSummary(fetchedSummary);
+  };
+
+  useEffect(() => {
+    // Llamar a fetchSummary cada vez que se monte la pantalla
+    fetchSummary();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userId]);
+
+  const handleRefresh = () => {
+    setIsRefreshing(true); // deshabilitar el botón
+
+    setTimeout(() => {
+      setIsRefreshing(false); // habilitar el botón después de 3 minutos
+    }, 180000);
+    fetchSummary();
+  };
+
+  if (!summary) {
+    return (
+      <View style={globalStyles.contenedor}>
+        <Text style={globalStyles.titleText}>Sumario</Text>
+        <Text>Cargando resumen...</Text>
+      </View>
+    );
+  }
+
   return (
     <View style={globalStyles.contenedor}>
       <Text style={globalStyles.titleText}>Sumario</Text>
-      <SumarioCard title="Ventas" quantity={15} variable="Ingresos" value="3400.00" />
       <SumarioCard
-        title="Productos en inventario"
-        quantity={250}
-        variable="Valor total"
-        value="30000.00"
+        title="Ordenes realizadas"
+        quantity={summary.totalOrders}
+        variable="Ingresos"
+        value={summary.totalSales.toFixed(2)}
       />
-      <View style={globalStyles.contenedorSumario}>
-        <Text style={globalStyles.infoSumario}>Producto más vendido</Text>
-        <ProductCard
-          image="https://img.freepik.com/vector-premium/icono-linea-concepto-producto-ilustracion-elemento-simple-diseno-simbolo-esquema-concepto-producto-puede-utilizar-ui-ux-web-movil_159242-2076.jpg"
-          name="Estilizador Gel Para Rizos"
-          price={140}
-          onPress={() => navigation.navigate('ProductStack')}
-        />
+      <SumarioCard
+        title="Stock en inventario"
+        quantity={summary.totalStock}
+        variable="Valor total"
+        value={summary.totalValue.toFixed(2)}
+      />
+      <View style={globalStyles.secondSummaryContainer}>
+        <View style={globalStyles.cardRowSummary}>
+          <SumarioCard title="Productos disponibles" quantity={summary.totalProducts} center />
+        </View>
+        <View style={globalStyles.cardRowSummary}>
+          <SumarioCard title="Categorías disponibles" quantity={summary.totalCategories} center />
+        </View>
+      </View>
+      <View style={globalStyles.containerSummaryButton}>
+        <BtnApp texto="Actualizar" disabled={isRefreshing} onPress={handleRefresh} />
       </View>
     </View>
   );

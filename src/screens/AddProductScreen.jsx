@@ -8,12 +8,12 @@ import InputWithIcon from '../components/InputWithIcon';
 // import ImagePickerComponent from '../components/ImagePicker';
 import BtnApp from '../components/Btn';
 import { createProduct } from '../services/productService';
+import { ImageTemplate } from '../utils/config';
 
 function AddProductScreen({ navigation }) {
   const { userInfo } = useContext(AuthContext);
   const userId = userInfo.user;
-  const image =
-    'https://img.freepik.com/vector-premium/icono-linea-concepto-producto-ilustracion-elemento-simple-diseno-simbolo-esquema-concepto-producto-puede-utilizar-ui-ux-web-movil_159242-2076.jpg';
+  const image = ImageTemplate;
   const [productName, setProductName] = useState('');
   const [category, setCategory] = useState('');
   const [stock, setStock] = useState('');

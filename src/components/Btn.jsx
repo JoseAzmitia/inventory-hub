@@ -18,9 +18,10 @@ const styles = StyleSheet.create({
   },
 });
 
-function BtnApp({ texto, icon, secondIcon, onPress, color, newColor }) {
+function BtnApp({ texto, icon, secondIcon, onPress, color, newColor, disabled }) {
   return (
     <TouchableOpacity
+      disabled={disabled}
       style={[styles.btn, { backgroundColor: newColor ? color : '#62CEB4' }]}
       onPress={onPress}
     >

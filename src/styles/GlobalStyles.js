@@ -130,6 +130,17 @@ const globalStyles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 20,
   },
+  secondSummaryContainer: {
+    flexDirection: 'row',
+    maxWidth: '100%',
+    marginBottom: 40,
+  },
+  cardRowSummary: {
+    flex: 1,
+  },
+  containerSummaryButton: {
+    alignItems: 'center',
+  },
 });
 
 export default globalStyles;

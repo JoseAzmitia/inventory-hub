@@ -2,14 +2,16 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-function SumarioCard({ title, quantity, variable, value }) {
+function SumarioCard({ title, quantity, variable, value, center }) {
   return (
-    <View style={styles.card}>
-      <Text style={styles.title}>{title}</Text>
-      <Text style={styles.quantity}>{quantity}</Text>
+    <View style={[styles.card, center && styles.center]}>
+      <Text numberOfLines={2} ellipsizeMode="tail" style={styles.title}>
+        {title}
+      </Text>
+      <Text style={[styles.quantity, center && styles.quantity2]}>{quantity}</Text>
       <View style={styles.infoContainer}>
-        <Text style={styles.variable}>{variable}</Text>
-        <Text style={styles.value}>${value}</Text>
+        {variable && <Text style={styles.variable}>{variable}</Text>}
+        {value && <Text style={styles.value}>${value}</Text>}
       </View>
     </View>
   );
@@ -27,6 +29,10 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+    maxWidth: '100%',
+  },
+  center: {
+    alignItems: 'center',
   },
   title: {
     fontSize: 14,
@@ -44,6 +50,11 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-Bold',
     fontWeight: 'bold',
     marginBottom: 16,
+  },
+  quantity2: {
+    fontSize: 32,
+    marginTop: 5,
+    marginBottom: 10,
   },
   variable: {
     fontSize: 14,
