@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Modal from 'react-native-modal';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import globalStyles from '../styles/GlobalStyles';
@@ -14,6 +15,9 @@ function OrderCompleteScreen({ navigation, route }) {
   const handleDeleteOrder = async () => {
     try {
       await deleteOrder(orderId);
+      const orders = JSON.parse(await AsyncStorage.getItem('orders')) || [];
+      const updatedOrders = orders.filter((order) => order.id !== orderId);
+      AsyncStorage.setItem('orders', JSON.stringify(updatedOrders));
       navigation.reset({
         index: 0,
         routes: [{ name: 'ProductStack', params: { screen: 'Productos' } }],

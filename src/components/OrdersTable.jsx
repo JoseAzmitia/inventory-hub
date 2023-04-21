@@ -6,7 +6,6 @@ function Table({ data }) {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.headerRow}>
-        <Text style={styles.headerCell}>Id</Text>
         <Text style={styles.headerCell}>Fecha</Text>
         <Text style={styles.headerCell}>Items</Text>
         <Text style={styles.headerCell}>Total</Text>
@@ -14,10 +13,9 @@ function Table({ data }) {
       {data.map((item, index) => (
         // eslint-disable-next-line react/no-array-index-key
         <View key={index} style={styles.row}>
-          <Text style={styles.cell}>{item.id}</Text>
-          <Text style={styles.cell}>{item.fecha}</Text>
+          <Text style={styles.cell}>{new Date(item.createdAt).toLocaleDateString('es-MX')}</Text>
           <Text style={styles.cell}>{item.items}</Text>
-          <Text style={styles.cell}>${item.total}</Text>
+          <Text style={styles.cell}>${item.totalValue}</Text>
         </View>
       ))}
     </ScrollView>

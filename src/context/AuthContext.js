@@ -39,6 +39,8 @@ export function AuthProvider({ children }) {
     setUserToken(null);
     AsyncStorage.removeItem('userInfo');
     AsyncStorage.removeItem('userToken');
+    AsyncStorage.removeItem('orders');
+    AsyncStorage.removeItem('cartItems');
     setIsLoading(false);
   };
 

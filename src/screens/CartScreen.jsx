@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useContext, useState } from 'react';
 import { Text, View } from 'react-native';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Modal from 'react-native-modal';
 import globalStyles from '../styles/GlobalStyles';
 import BtnApp from '../components/Btn';
@@ -26,6 +26,13 @@ function PantallaCarrito({ navigation }) {
       const products = cartItems;
       const response = await createOrder(userId, products);
       if (response && response.id) {
+        const storedOrders = await AsyncStorage.getItem('orders');
+        let orders = [];
+        if (storedOrders) {
+          orders = JSON.parse(storedOrders);
+        }
+        orders.push(response);
+        AsyncStorage.setItem('orders', JSON.stringify(orders));
         clearCart();
         navigation.replace('OrderCompleteScreen', { orderId: response.id });
       }
