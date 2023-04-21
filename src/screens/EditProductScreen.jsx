@@ -38,6 +38,7 @@ function EditProductScreen({ navigation, route }) {
         price,
       };
       await updateProduct(product.id, updatedProduct);
+      removeFromCart(product);
       console.log('Producto editado');
       navigation.navigate('Productos', { updateProductos: Math.random() });
     } catch (error) {

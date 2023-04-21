@@ -61,7 +61,12 @@ function OrderCompleteScreen({ navigation, route }) {
         </View>
       </Modal>
       <View style={globalStyles.cancelOrderButton}>
-        <BtnApp texto="Cancelar Orden" newColor color="#FF7474" onPress={handleDeleteOrder} />
+        <BtnApp
+          texto="Cancelar Orden"
+          newColor
+          color="#FF7474"
+          onPress={() => setModalOrder(true)}
+        />
       </View>
     </View>
   );
