@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
   },
   secondIcon: {
     fontSize: 24,
-    color: '#62CEB4',
+    color: '#A9A9A9',
   },
   dropdown: {
     marginLeft: -70,

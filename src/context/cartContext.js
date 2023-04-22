@@ -35,7 +35,7 @@ function CartProvider({ children }) {
     (product) => {
       const existingProduct = cartItems.find((item) => item.id === product.id);
       if (existingProduct) {
-        if (existingProduct.quantity < existingProduct.stock) {
+        if (existingProduct.stock > 0 && existingProduct.quantity <= existingProduct.stock) {
           const updatedProduct = { ...existingProduct, quantity: existingProduct.quantity + 1 };
           const updatedCartItems = cartItems.map((item) =>
             item.id === product.id ? updatedProduct : item

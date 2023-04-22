@@ -2,6 +2,7 @@
 import * as React from 'react';
 import * as Font from 'expo-font';
 
+import Toast from 'react-native-toast-message';
 import { AuthProvider } from './src/context/authContext';
 import { CartProvider } from './src/context/cartContext';
 import AppNav from './src/navigation/appNav';
@@ -37,6 +38,7 @@ export default class App extends React.Component {
         <AuthProvider>
           <CartProvider>
             <AppNav />
+            <Toast />
           </CartProvider>
         </AuthProvider>
       );

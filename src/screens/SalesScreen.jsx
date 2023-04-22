@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect, useContext } from 'react';
 import { Text, View } from 'react-native';
+import Toast from 'react-native-toast-message';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import globalStyles from '../styles/GlobalStyles';
 import ActionButtonsV2 from '../components/ActionButtonsV2';
@@ -64,14 +65,25 @@ function PantallaVentas() {
     }
   };
 
+  const handleDownloadPdf = () => {
+    Toast.show({
+      type: 'info',
+      text1: 'Esta función está deshabilitada por el momento',
+      text2: 'Espérela en las próximas actualizaciones de la app',
+      visibilityTime: 3000,
+      autoHide: true,
+      position: 'top',
+    });
+  };
+
   return (
     <View style={globalStyles.contenedor}>
       <Text style={globalStyles.titleText}>Ventas</Text>
       <ActionButtonsV2
-        actionText="Excel"
+        actionText="Descargar"
         actionIcon="ios-cloud-download"
         handleOrderOptionPress={handleOrderOptionPress}
-        onPressAction={() => console.log('Agregando producto...')}
+        onPressAction={handleDownloadPdf}
       />
       <Table data={orderedOrders()} />
     </View>

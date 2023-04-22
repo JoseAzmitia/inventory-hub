@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect, useContext } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, ActivityIndicator } from 'react-native';
+import Toast from 'react-native-toast-message';
 import globalStyles from '../styles/GlobalStyles';
 import SumarioCard from '../components/SumarioCard';
 import getSummaryByUserId from '../services/summaryService';
@@ -28,7 +29,14 @@ function PantallaSumario() {
 
   const handleRefresh = () => {
     setIsRefreshing(true); // deshabilitar el botón
-
+    Toast.show({
+      type: 'info',
+      text1: 'Botón actualizar deshabilitado',
+      text2: 'Se habilitará en 3 minutos',
+      visibilityTime: 180000,
+      autoHide: true,
+      position: 'bottom',
+    });
     setTimeout(() => {
       setIsRefreshing(false); // habilitar el botón después de 3 minutos
     }, 180000);
@@ -39,7 +47,9 @@ function PantallaSumario() {
     return (
       <View style={globalStyles.contenedor}>
         <Text style={globalStyles.titleText}>Sumario</Text>
-        <Text>Cargando resumen...</Text>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <ActivityIndicator size="large" color="#62CEB4" />
+        </View>
       </View>
     );
   }

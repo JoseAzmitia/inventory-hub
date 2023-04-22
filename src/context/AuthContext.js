@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { createContext, useState, useEffect } from 'react';
+import Toast from 'react-native-toast-message';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { API_URL } from '../utils/config';
@@ -30,6 +31,13 @@ export function AuthProvider({ children }) {
         AsyncStorage.setItem('userInfo', JSON.stringify(info));
       })
       .catch((e) => {
+        Toast.show({
+          type: 'error',
+          text1: 'Credenciales incorrectas',
+          visibilityTime: 3000,
+          autoHide: true,
+          position: 'bottom',
+        });
         console.log(`Login error ${e}`);
       });
   };
@@ -42,6 +50,13 @@ export function AuthProvider({ children }) {
     AsyncStorage.removeItem('orders');
     AsyncStorage.removeItem('cartItems');
     setIsLoading(false);
+    Toast.show({
+      type: 'success',
+      text1: 'Has salido de tu sesión',
+      visibilityTime: 3000,
+      autoHide: true,
+      position: 'bottom',
+    });
   };
 
   const isLoggedIn = async () => {
