@@ -4,7 +4,7 @@ import { Text, View } from 'react-native';
 import globalStyles from '../styles/GlobalStyles';
 import DetailsProductCard from '../components/DetailsProductCard';
 import BtnApp from '../components/Btn';
-import { CartContext } from '../context/cartContext';
+import { CartContext } from '../contextt/cartContext';
 
 function DetailsProductScreen({ route, navigation }) {
   const { product } = route.params;

@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { View, ActivityIndicator } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import AuthStack from './authStack';
-import { AuthContext } from '../context/authContext';
+import { AuthContext } from '../contextt/authContext';
 import TabNavigator from './tabNavigator';
 
 function AppNav() {

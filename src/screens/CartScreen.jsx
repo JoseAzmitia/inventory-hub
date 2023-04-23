@@ -6,8 +6,8 @@ import Modal from 'react-native-modal';
 import globalStyles from '../styles/GlobalStyles';
 import BtnApp from '../components/Btn';
 import ItemsCard from '../components/ItemsCart';
-import { CartContext } from '../context/cartContext';
-import { AuthContext } from '../context/authContext';
+import { CartContext } from '../contextt/cartContext';
+import { AuthContext } from '../contextt/authContext';
 import { createOrder } from '../services/orderService';
 
 function PantallaCarrito({ navigation }) {

@@ -5,7 +5,7 @@ import globalStyles from '../styles/GlobalStyles';
 import ActionButtons from '../components/ActionButtons';
 import ProductCard from '../components/ProductCard';
 import { getAllProductsByUser } from '../services/productService';
-import { AuthContext } from '../context/authContext';
+import { AuthContext } from '../contextt/authContext';
 
 function PantallaProductos({ navigation, route }) {
   const { userInfo } = useContext(AuthContext);

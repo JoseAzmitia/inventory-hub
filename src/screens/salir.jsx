@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import { View, Text } from 'react-native';
 import Modal from 'react-native-modal';
 import globalStyles from '../styles/GlobalStyles';
-import { AuthContext } from '../context/authContext';
+import { AuthContext } from '../contextt/authContext';
 import BtnApp from '../components/Btn';
 
 function Salir({ navigation }) {
