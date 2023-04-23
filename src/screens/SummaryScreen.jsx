@@ -5,7 +5,7 @@ import Toast from 'react-native-toast-message';
 import globalStyles from '../styles/GlobalStyles';
 import SumarioCard from '../components/SumarioCard';
 import getSummaryByUserId from '../services/summaryService';
-import { AuthContext } from '../contextt/authContext';
+import { AuthContext } from '../context/authContext';
 import BtnApp from '../components/Btn';
 
 function PantallaSumario() {

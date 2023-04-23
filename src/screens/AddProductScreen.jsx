@@ -2,7 +2,7 @@
 import React, { useState, useContext } from 'react';
 import { Text, View } from 'react-native';
 import Modal from 'react-native-modal';
-import { AuthContext } from '../contextt/authContext';
+import { AuthContext } from '../context/authContext';
 import globalStyles from '../styles/GlobalStyles';
 import InputWithIcon from '../components/InputWithIcon';
 // import ImagePickerComponent from '../components/ImagePicker';

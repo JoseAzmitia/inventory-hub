@@ -6,7 +6,7 @@ import globalStyles from '../styles/GlobalStyles';
 import InputWithIcon from '../components/InputWithIcon';
 import BtnApp from '../components/Btn';
 import { deleteProduct, updateProduct } from '../services/productService';
-import { CartContext } from '../contextt/cartContext';
+import { CartContext } from '../context/cartContext';
 
 function EditProductScreen({ navigation, route }) {
   const { product } = route.params;

@@ -2,7 +2,7 @@
 import React, { useState, useContext } from 'react';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
-import { AuthContext } from '../contextt/authContext';
+import { AuthContext } from '../context/authContext';
 import InputWithIcon from '../components/InputWithIcon';
 
 const logo = require('../assets/img/misc/logo.png');

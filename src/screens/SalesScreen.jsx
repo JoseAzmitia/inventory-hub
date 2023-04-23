@@ -7,7 +7,7 @@ import globalStyles from '../styles/GlobalStyles';
 import ActionButtonsV2 from '../components/ActionButtonsV2';
 import Table from '../components/OrdersTable';
 import { getOrdersByUserId } from '../services/orderService';
-import { AuthContext } from '../contextt/authContext';
+import { AuthContext } from '../context/authContext';
 
 function PantallaVentas() {
   const { userInfo } = useContext(AuthContext);
