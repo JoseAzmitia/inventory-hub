@@ -6,7 +6,7 @@ import Modal from 'react-native-modal';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import globalStyles from '../styles/GlobalStyles';
 import BtnApp from '../components/Btn';
-import { deleteOrder } from '../services/orderService';
+import { deleteOrder } from '../servicess/orderService';
 
 function OrderCompleteScreen({ navigation, route }) {
   const { orderId } = route.params;

@@ -7,7 +7,7 @@ import globalStyles from '../styles/GlobalStyles';
 import InputWithIcon from '../components/InputWithIcon';
 // import ImagePickerComponent from '../components/ImagePicker';
 import BtnApp from '../components/Btn';
-import { createProduct } from '../services/productService';
+import { createProduct } from '../servicess/productService';
 import { ImageTemplate } from '../utils/config';
 
 function AddProductScreen({ navigation }) {

@@ -4,7 +4,7 @@ import { ScrollView, Text, View } from 'react-native';
 import globalStyles from '../styles/GlobalStyles';
 import ActionButtons from '../components/ActionButtons';
 import ProductCard from '../components/ProductCard';
-import { getAllProductsByUser } from '../services/productService';
+import { getAllProductsByUser } from '../servicess/productService';
 import { AuthContext } from '../context/authContext';
 
 function PantallaProductos({ navigation, route }) {

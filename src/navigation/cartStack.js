@@ -2,8 +2,8 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import PantallaCarrito from '../screens/CartScreen';
-import OrderCompleteScreen from '../screens/OrderCompleteScreen';
+import PantallaCarrito from '../screenss/CartScreen';
+import OrderCompleteScreen from '../screenss/OrderCompleteScreen';
 
 const Stack = createStackNavigator();
 

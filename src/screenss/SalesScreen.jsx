@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import globalStyles from '../styles/GlobalStyles';
 import ActionButtonsV2 from '../components/ActionButtonsV2';
 import Table from '../components/OrdersTable';
-import { getOrdersByUserId } from '../services/orderService';
+import { getOrdersByUserId } from '../servicess/orderService';
 import { AuthContext } from '../context/authContext';
 
 function PantallaVentas() {

@@ -4,7 +4,7 @@ import { Text, View, ActivityIndicator } from 'react-native';
 import Toast from 'react-native-toast-message';
 import globalStyles from '../styles/GlobalStyles';
 import SumarioCard from '../components/SumarioCard';
-import getSummaryByUserId from '../services/summaryService';
+import getSummaryByUserId from '../servicess/summaryService';
 import { AuthContext } from '../context/authContext';
 import BtnApp from '../components/Btn';
 

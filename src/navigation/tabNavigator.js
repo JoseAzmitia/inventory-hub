@@ -5,11 +5,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 // pantallas
-import PantallaSumario from '../screens/SummaryScreen';
+import PantallaSumario from '../screenss/SummaryScreen';
 import ProductStack from './productStack';
 import CartStack from './cartStack';
-import PantallaVentas from '../screens/SalesScreen';
-import Salir from '../screens/Salir';
+import PantallaVentas from '../screenss/SalesScreen';
+import Salir from '../screenss/Salir';
 
 const Tab = createBottomTabNavigator();
 

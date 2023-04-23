@@ -5,7 +5,7 @@ import Modal from 'react-native-modal';
 import globalStyles from '../styles/GlobalStyles';
 import InputWithIcon from '../components/InputWithIcon';
 import BtnApp from '../components/Btn';
-import { deleteProduct, updateProduct } from '../services/productService';
+import { deleteProduct, updateProduct } from '../servicess/productService';
 import { CartContext } from '../context/cartContext';
 
 function EditProductScreen({ navigation, route }) {

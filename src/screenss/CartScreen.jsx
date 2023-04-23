@@ -8,7 +8,7 @@ import BtnApp from '../components/Btn';
 import ItemsCard from '../components/ItemsCart';
 import { CartContext } from '../context/cartContext';
 import { AuthContext } from '../context/authContext';
-import { createOrder } from '../services/orderService';
+import { createOrder } from '../servicess/orderService';
 
 function PantallaCarrito({ navigation }) {
   const { cartItems, calculateTotal, removeFromCart, clearCart } = useContext(CartContext); // Obtener los elementos del carrito del contexto
