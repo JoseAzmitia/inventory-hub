@@ -17,7 +17,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/iconIH.png",
+        "foregroundImage": "./assets/logoAndroid.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.azmitia.inventoryhub"
