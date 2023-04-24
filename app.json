@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "inventory Hub",
+    "name": "Inventory Hub",
     "slug": "inventory-hub",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/iconApp.png",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splashApp.png",
@@ -17,7 +17,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/logoAndroid.png",
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.azmitia.inventoryhub"
