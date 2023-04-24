@@ -35,7 +35,7 @@ function AddProductScreen({ navigation }) {
       navigation.navigate('Productos', { updateProductos: Math.random() });
     } catch (error) {
       console.error(error);
-      console.log('Función llamada en AddProduct');
+      console.log('Función llamada en AddProduct_');
     }
   };
 
