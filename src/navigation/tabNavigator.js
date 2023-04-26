@@ -16,7 +16,8 @@ const Tab = createBottomTabNavigator();
 
 function TabNavigator() {
   const { cartItems } = useContext(CartContext);
-  const carritoLength = cartItems.length > 0 ? cartItems.length : null;
+  const carritoLength = cartItems.reduce((total, item) => total + item.quantity, null);
+
   return (
     <Tab.Navigator
       screenOptions={{
