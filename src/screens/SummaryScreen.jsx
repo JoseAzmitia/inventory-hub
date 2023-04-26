@@ -33,7 +33,7 @@ function PantallaSumario() {
       type: 'info',
       text1: 'Botón actualizar deshabilitado',
       text2: 'Se habilitará en 3 minutos',
-      visibilityTime: 180000,
+      visibilityTime: 3000,
       autoHide: true,
       position: 'bottom',
     });

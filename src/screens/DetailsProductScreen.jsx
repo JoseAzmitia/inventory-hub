@@ -28,7 +28,7 @@ function DetailsProductScreen({ route, navigation }) {
         <View style={globalStyles.detailsButtonsContainer}>
           <View style={globalStyles.detailsButton}>
             <BtnApp
-              texto="Edit"
+              texto="Editar"
               icon="edit"
               newColor
               color="#828282"

@@ -58,7 +58,7 @@ function AddProductScreen({ navigation }) {
           onChangeText={setCategory}
         />
         <InputWithIcon
-          title="Ingresa la cantidad"
+          title="Ingresa el stock"
           placeholder="Stock"
           icon="ios-reader-outline"
           value={stock}
@@ -66,7 +66,7 @@ function AddProductScreen({ navigation }) {
           onChangeText={setStock}
         />
         <InputWithIcon
-          title="Ingresa la cantidad"
+          title="Ingresa el precio"
           placeholder="Precio"
           icon="ios-pricetag-outline"
           value={price}

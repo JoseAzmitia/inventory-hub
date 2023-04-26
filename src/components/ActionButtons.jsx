@@ -96,8 +96,7 @@ const styles = StyleSheet.create({
     marginLeft: -70,
     marginTop: -25,
     width: 90,
-    height: 150,
-    zIndex: -1,
+    height: 'auto',
   },
   dropdownOption: {
     fontSize: 14,

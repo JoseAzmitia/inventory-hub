@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { Text, View } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Modal from 'react-native-modal';
+import { ScrollView } from 'react-native-gesture-handler';
 import globalStyles from '../styles/GlobalStyles';
 import BtnApp from '../components/Btn';
 import ItemsCard from '../components/ItemsCart';
@@ -48,33 +49,37 @@ function PantallaCarrito({ navigation }) {
         <>
           <View style={globalStyles.botonCarrito}>
             <BtnApp
-              texto={`Total: $${calculateTotal(cartItems).toFixed(2)}`}
-              icon="monetization-on"
+              texto="Crear orden"
               secondIcon="arrow-forward"
               onPress={() => setModalOrder(true)}
             />
           </View>
           {/* Iterar sobre los elementos del carrito y crear un componente ItemsCard para cada uno */}
-          {cartItems.map((item) => (
-            <ItemsCard
-              key={item.id} // Es importante que cada componente tenga una key única
-              image={item.image}
-              name={item.name}
-              price={item.price}
-              quantity={item.quantity}
-              onPress={() => handleRemove(item)}
-            />
-          ))}
+          <ScrollView style={globalStyles.contenedorItemsCart}>
+            {cartItems.map((item) => (
+              <ItemsCard
+                key={item.id} // Es importante que cada componente tenga una key única
+                image={item.image}
+                name={item.name}
+                price={item.price}
+                quantity={item.quantity}
+                onPress={() => handleRemove(item)}
+              />
+            ))}
+          </ScrollView>
+          <View style={globalStyles.contenedorCartTotal}>
+            <Text style={globalStyles.textContenedorCartTotal}>{`Total: $${calculateTotal(
+              cartItems
+            ).toFixed(2)}`}</Text>
+          </View>
         </>
       ) : (
         <>
           <View style={globalStyles.botonCarrito}>
-            <BtnApp texto="Ir al catálogo" onPress={() => navigation.navigate('Productos')} />
+            <BtnApp texto="Ver los productos" onPress={() => navigation.navigate('Productos')} />
           </View>
-          <Text style={globalStyles.tittleCartEmpty}>Tu carrito está vacío</Text>
-          <Text style={globalStyles.textCartEmpty}>
-            Intenta agregar productos desde el catálogo.
-          </Text>
+          <Text style={globalStyles.tittleCartEmpty}>Crea un nuevo carrito</Text>
+          <Text style={globalStyles.textCartEmpty}>Agrega productos para crear una orden.</Text>
         </>
       )}
       <Modal isVisible={modalOrder}>

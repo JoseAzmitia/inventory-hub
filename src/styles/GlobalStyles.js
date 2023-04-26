@@ -141,6 +141,32 @@ const globalStyles = StyleSheet.create({
   containerSummaryButton: {
     alignItems: 'center',
   },
+  contenedorCartTotal: {
+    position: 'absolute',
+    bottom: 0,
+    backgroundColor: '#fff',
+    padding: 20,
+    borderBottomColor: '#828282',
+    borderBottomWidth: 0.5,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    width: '100%',
+  },
+  textContenedorCartTotal: {
+    textAlign: 'center',
+    fontSize: 18,
+    fontFamily: 'Inter-Bold',
+  },
+  contenedorItemsCart: {
+    flex: 1,
+    maxHeight: '70%',
+  },
 });
 
 export default globalStyles;

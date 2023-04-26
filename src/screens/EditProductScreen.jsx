@@ -65,7 +65,7 @@ function EditProductScreen({ navigation, route }) {
           onChangeText={setCategory}
         />
         <InputWithIcon
-          title="Ingresa la cantidad"
+          title="Ingresa el stock"
           placeholder="Stock"
           icon="ios-reader-outline"
           value={stock.toString()}
@@ -73,7 +73,7 @@ function EditProductScreen({ navigation, route }) {
           onChangeText={setStock}
         />
         <InputWithIcon
-          title="Ingresa la cantidad"
+          title="Ingresa el precio"
           placeholder="Precio"
           icon="ios-pricetag-outline"
           value={price.toString()}

@@ -104,11 +104,11 @@ const styles = StyleSheet.create({
     color: '#A9A9A9',
   },
   dropdown: {
+    flex: 1,
     marginLeft: -70,
     marginTop: -25,
     width: 90,
-    height: 150,
-    zIndex: -1,
+    height: 'auto',
   },
   dropdownOption: {
     fontSize: 14,
@@ -116,6 +116,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 12,
     backgroundColor: '#fff',
+    height: 'auto',
   },
 });
 

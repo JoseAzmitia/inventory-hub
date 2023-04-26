@@ -3,6 +3,7 @@
 import React, { useContext } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { CartContext } from '../context/cartContext';
 
 // pantallas
 import PantallaSumario from '../screens/SummaryScreen';
@@ -14,6 +15,8 @@ import Salir from '../screens/Salir';
 const Tab = createBottomTabNavigator();
 
 function TabNavigator() {
+  const { cartItems } = useContext(CartContext);
+  const carritoLength = cartItems.length > 0 ? cartItems.length : null;
   return (
     <Tab.Navigator
       screenOptions={{
@@ -59,6 +62,7 @@ function TabNavigator() {
         component={CartStack}
         options={{
           title: 'Carrito',
+          tabBarBadge: carritoLength,
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="ios-cart-outline" size={size} color={color} />
           ),
