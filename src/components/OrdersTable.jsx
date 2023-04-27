@@ -25,9 +25,8 @@ function Table({ data }) {
         <Text style={styles.headerCell}>Detalles</Text>
       </View>
       <ScrollView>
-        {data.map((item, index) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <View key={index} style={styles.row}>
+        {data.map((item) => (
+          <View key={item.id} style={styles.row}>
             <Text style={styles.cell}>{new Date(item.createdAt).toLocaleDateString('es-MX')}</Text>
             <Text style={styles.cell}>{item.items}</Text>
             <Text style={styles.cell}>${item.totalValue.toFixed(2)}</Text>
@@ -41,13 +40,13 @@ function Table({ data }) {
       <Modal isVisible={modalVisible}>
         <View style={globalStyles.modalContainer}>
           <Text style={globalStyles.modalText}>Detalles de la orden</Text>
-          {modalData.map((product, index) => (
-            <ScrollView>
-              <Text key={index} style={styles.modalText}>
+          <ScrollView>
+            {modalData.map((product) => (
+              <Text key={product.id} style={styles.modalText}>
                 {`${product.name} x ${product.quantity} | $${product.price.toFixed(2)}`}
               </Text>
-            </ScrollView>
-          ))}
+            ))}
+          </ScrollView>
           <View style={styles.containerButton}>
             <BtnApp
               texto="Cerrar"
