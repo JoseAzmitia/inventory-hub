@@ -39,6 +39,20 @@ function AddProductScreen({ navigation }) {
     }
   };
 
+  const handleInputStock = (text) => {
+    // Comprobar que solo se ingresen números enteros
+    if (/^\d*$/.test(text)) {
+      setStock(text);
+    }
+  };
+
+  const handleInputPrice = (text) => {
+    const regex = /^[0-9]+(\.[0-9]{0,2})?$/;
+    if (text === '' || regex.test(text)) {
+      setPrice(text);
+    }
+  };
+
   return (
     <View style={globalStyles.contenedor}>
       <Text style={globalStyles.titleText}>Nuevo Producto</Text>
@@ -66,16 +80,16 @@ function AddProductScreen({ navigation }) {
           value={stock}
           maxLength={6}
           numeric
-          onChangeText={setStock}
+          onChangeText={handleInputStock}
         />
         <InputWithIcon
           title="Ingresa el precio"
           placeholder="Precio"
           icon="ios-pricetag-outline"
           value={price}
-          maxLength={6}
+          maxLength={9}
           numeric
-          onChangeText={setPrice}
+          onChangeText={handleInputPrice}
         />
         {/* <ImagePickerComponent /> */}
         <Modal isVisible={isModalVisible}>
