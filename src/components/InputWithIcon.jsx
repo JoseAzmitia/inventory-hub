@@ -11,6 +11,7 @@ function InputWithIcon({
   onChangeText,
   secureTextEntry,
   numeric,
+  maxLength,
 }) {
   const [isFocused, setIsFocused] = useState(false);
 
@@ -25,6 +26,7 @@ function InputWithIcon({
           style={styles.input}
           placeholder={placeholder}
           value={value}
+          maxLength={maxLength}
           onChangeText={onChangeText}
           secureTextEntry={secureTextEntry}
           keyboardType={numeric ? 'numeric' : 'default'}

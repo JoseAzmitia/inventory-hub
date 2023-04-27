@@ -9,7 +9,7 @@ function DetailsProductCard({ image, name, price, stock }) {
       <Text style={styles.name}>{name}</Text>
       <View style={styles.detailContainer}>
         <Text style={styles.detail}>Precio</Text>
-        <Text style={styles.price}>${price}</Text>
+        <Text style={styles.price}>${price.toFixed(2)}</Text>
       </View>
       <View style={styles.detailContainer}>
         <Text style={styles.detail}>Stock</Text>

@@ -55,6 +55,7 @@ function EditProductScreen({ navigation, route }) {
           placeholder="Nombre del producto"
           icon="ios-information-outline"
           value={productName}
+          maxLength={40}
           onChangeText={setProductName}
         />
         <InputWithIcon
@@ -62,6 +63,7 @@ function EditProductScreen({ navigation, route }) {
           placeholder="Categoría"
           icon="ios-grid-outline"
           value={category}
+          maxLength={19}
           onChangeText={setCategory}
         />
         <InputWithIcon
@@ -69,6 +71,7 @@ function EditProductScreen({ navigation, route }) {
           placeholder="Stock"
           icon="ios-reader-outline"
           value={stock.toString()}
+          maxLength={6}
           numeric
           onChangeText={setStock}
         />
@@ -77,6 +80,7 @@ function EditProductScreen({ navigation, route }) {
           placeholder="Precio"
           icon="ios-pricetag-outline"
           value={price.toString()}
+          maxLength={6}
           numeric
           onChangeText={setPrice}
         />
