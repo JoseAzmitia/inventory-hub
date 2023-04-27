@@ -76,7 +76,10 @@ function PantallaCarrito({ navigation }) {
       ) : (
         <>
           <View style={globalStyles.botonCarrito}>
-            <BtnApp texto="Ver los productos" onPress={() => navigation.navigate('Productos')} />
+            <BtnApp
+              texto="Ver los productos"
+              onPress={() => navigation.navigate('ProductStack', { screen: 'Productos' })}
+            />
           </View>
           <Text style={globalStyles.tittleCartEmpty}>Crea un nuevo carrito</Text>
           <Text style={globalStyles.textCartEmpty}>Agrega productos para crear una orden.</Text>
