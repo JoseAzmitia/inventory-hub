@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect, useContext } from 'react';
-import { ScrollView, View, Image } from 'react-native';
+import { ScrollView, View, Image, ActivityIndicator } from 'react-native';
 import globalStyles from '../styles/GlobalStyles';
 import ActionButtons from '../components/ActionButtons';
 import ProductCard from '../components/ProductCard';
@@ -14,6 +14,7 @@ function PantallaProductos({ navigation, route }) {
   const [products, setProducts] = useState([]);
   const [orderType, setOrderType] = useState(null);
   const [productsUpdated, setProductsUpdated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const userId = userInfo.user;
   const { updateProductos } = route.params ?? {};
 
@@ -30,9 +31,11 @@ function PantallaProductos({ navigation, route }) {
       try {
         const result = await getAllProductsByUser(userId);
         setProducts(result);
+        setIsLoading(false);
         console.log('api llamada en productsScreen');
       } catch (error) {
         console.error(error);
+        setIsLoading(false);
         console.log('Función llamada en productsScreen');
       }
     };
@@ -60,6 +63,16 @@ function PantallaProductos({ navigation, route }) {
     }
   };
 
+  if (isLoading) {
+    return (
+      <View style={globalStyles.contenedor}>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <ActivityIndicator size="large" color="#62CEB4" />
+        </View>
+      </View>
+    );
+  }
+
   return (
     <View style={globalStyles.contenedor}>
       <ActionButtons
@@ -68,7 +81,7 @@ function PantallaProductos({ navigation, route }) {
         handleOrderOptionPress={handleOrderOptionPress}
         onPressAction={handleAddProductPress}
       />
-      {products.length === 0 ? (
+      {products.length === 0 && !isLoading ? (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <Image source={nothing} style={{ width: 250, height: 220 }} />
         </View>

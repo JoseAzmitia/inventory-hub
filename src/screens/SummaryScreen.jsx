@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect, useContext } from 'react';
-import { Text, View, ActivityIndicator } from 'react-native';
+import { View, ActivityIndicator } from 'react-native';
 import Toast from 'react-native-toast-message';
 import globalStyles from '../styles/GlobalStyles';
 import SumarioCard from '../components/SumarioCard';
@@ -46,7 +46,6 @@ function PantallaSumario() {
   if (!summary) {
     return (
       <View style={globalStyles.contenedor}>
-        <Text style={globalStyles.titleText}>Sumario</Text>
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
           <ActivityIndicator size="large" color="#62CEB4" />
         </View>
