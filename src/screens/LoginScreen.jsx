@@ -1,9 +1,10 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useContext } from 'react';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
-import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { AuthContext } from '../context/authContext';
 import InputWithIcon from '../components/InputWithIcon';
+import BtnApp from '../components/Btn';
 
 const logo = require('../assets/img/misc/logo.png');
 
@@ -36,9 +37,7 @@ function PantallaLogin() {
         onChangeText={setPassword}
         secureTextEntry
       />
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Iniciar</Text>
-      </TouchableOpacity>
+      <BtnApp texto="Iniciar" onPress={handleLogin} />
     </View>
   );
 }
