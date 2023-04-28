@@ -1,10 +1,11 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useContext, useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import Modal from 'react-native-modal';
 import globalStyles from '../styles/GlobalStyles';
 import { AuthContext } from '../context/authContext';
 import BtnApp from '../components/Btn';
+import thank from '../assets/img/misc/Thank.png';
 
 function Salir({ navigation }) {
   const { logout } = useContext(AuthContext);
@@ -14,9 +15,11 @@ function Salir({ navigation }) {
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Modal isVisible={modal}>
         <View style={globalStyles.modalContainer}>
-          <Text style={globalStyles.modalText}>¿Confirma cerrar la sesión?</Text>
+          <Image source={thank} style={{ width: 120, height: 90 }} />
+          <Text style={globalStyles.modalText}>Vuelve pronto!</Text>
+          <Text style={globalStyles.modalTextQuestion}>¿Está seguro que desea cerrar sesión?</Text>
           <BtnApp
-            texto="Sí, cerrar sesión"
+            texto="Cerrar sesión"
             onPress={() => {
               setModal(false);
               logout();
@@ -25,7 +28,8 @@ function Salir({ navigation }) {
           <BtnApp
             texto="Cancelar"
             newColor
-            color="#FF7575"
+            border
+            color="#828282"
             onPress={() => {
               setModal(false);
               navigation.navigate('Sumario');

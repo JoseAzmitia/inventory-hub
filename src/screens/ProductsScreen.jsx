@@ -1,11 +1,12 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect, useContext } from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, View, Image } from 'react-native';
 import globalStyles from '../styles/GlobalStyles';
 import ActionButtons from '../components/ActionButtons';
 import ProductCard from '../components/ProductCard';
 import { getAllProductsByUser } from '../services/productService';
 import { AuthContext } from '../context/authContext';
+import nothing from '../assets/img/misc/Nothing.png';
 
 function PantallaProductos({ navigation, route }) {
   const { userInfo } = useContext(AuthContext);
@@ -67,26 +68,32 @@ function PantallaProductos({ navigation, route }) {
         handleOrderOptionPress={handleOrderOptionPress}
         onPressAction={handleAddProductPress}
       />
-      <ScrollView style={globalStyles.contenedorProductos}>
-        <View style={globalStyles.contenedorProductosColumn}>
-          {[...Array(Math.ceil(products.length / 2))].map((_, index) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <View style={globalStyles.contenedorProductosRow} key={index}>
-              {orderedProducts()
-                .slice(index * 2, index * 2 + 2)
-                .map((product) => (
-                  <ProductCard
-                    key={product.id}
-                    image={product.image}
-                    name={product.name}
-                    price={product.price.toFixed(2)}
-                    onPress={() => navigation.navigate('Detalles del producto', { product })}
-                  />
-                ))}
-            </View>
-          ))}
+      {products.length === 0 ? (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Image source={nothing} style={{ width: 250, height: 220 }} />
         </View>
-      </ScrollView>
+      ) : (
+        <ScrollView style={globalStyles.contenedorProductos}>
+          <View style={globalStyles.contenedorProductosColumn}>
+            {[...Array(Math.ceil(products.length / 2))].map((_, index) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <View style={globalStyles.contenedorProductosRow} key={index}>
+                {orderedProducts()
+                  .slice(index * 2, index * 2 + 2)
+                  .map((product) => (
+                    <ProductCard
+                      key={product.id}
+                      image={product.image}
+                      name={product.name}
+                      price={product.price.toFixed(2)}
+                      onPress={() => navigation.navigate('Detalles del producto', { product })}
+                    />
+                  ))}
+              </View>
+            ))}
+          </View>
+        </ScrollView>
+      )}
     </View>
   );
 }

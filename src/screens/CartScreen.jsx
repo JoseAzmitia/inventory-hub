@@ -88,13 +88,19 @@ function PantallaCarrito({ navigation }) {
         <View style={globalStyles.modalContainer}>
           <Text style={globalStyles.modalText}>¿Confirma crear la orden?</Text>
           <BtnApp
-            texto="Sí, crear orden"
+            texto="Crear orden"
             onPress={() => {
               setModalOrder(false);
               handleCreateOrder();
             }}
           />
-          <BtnApp texto="Cancelar" newColor color="#FF7575" onPress={() => setModalOrder(false)} />
+          <BtnApp
+            texto="Cancelar"
+            newColor
+            border
+            color="#828282"
+            onPress={() => setModalOrder(false)}
+          />
         </View>
       </Modal>
     </View>

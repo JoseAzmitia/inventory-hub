@@ -101,7 +101,7 @@ function AddProductScreen({ navigation }) {
               ¿Está seguro de que desea agregar este producto?
             </Text>
             <BtnApp
-              texto="Sí, agregar producto"
+              texto="Agregar producto"
               onPress={() => {
                 setIsModalVisible(false);
                 handleSaveProduct();
@@ -110,7 +110,8 @@ function AddProductScreen({ navigation }) {
             <BtnApp
               texto="Cancelar"
               newColor
-              color="#FF7575"
+              border
+              color="#828282"
               onPress={() => setIsModalVisible(false)}
             />
           </View>

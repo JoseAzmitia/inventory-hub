@@ -48,12 +48,7 @@ function Table({ data }) {
             ))}
           </ScrollView>
           <View style={styles.containerButton}>
-            <BtnApp
-              texto="Cerrar"
-              newColor
-              color="#FF7474"
-              onPress={() => setModalVisible(false)}
-            />
+            <BtnApp texto="Cerrar" onPress={() => setModalVisible(false)} />
           </View>
         </View>
       </Modal>

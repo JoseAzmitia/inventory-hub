@@ -29,7 +29,6 @@ function OrderCompleteScreen({ navigation, route }) {
 
   return (
     <View style={globalStyles.contenedor}>
-      <Text style={globalStyles.titleText}>Carrito</Text>
       <View style={globalStyles.botonCarrito}>
         <BtnApp
           texto="Ir al catálogo"
@@ -51,19 +50,28 @@ function OrderCompleteScreen({ navigation, route }) {
         <View style={globalStyles.modalContainer}>
           <Text style={globalStyles.modalText}>¿Confirma eliminar la orden?</Text>
           <BtnApp
-            texto="Sí, eliminar orden"
+            newColor
+            color="#FF7474"
+            texto="Eliminar orden"
             onPress={() => {
               setModalOrder(false);
               handleDeleteOrder();
             }}
           />
-          <BtnApp texto="Cancelar" newColor color="#FF7575" onPress={() => setModalOrder(false)} />
+          <BtnApp
+            texto="Cancelar"
+            newColor
+            border
+            color="#828282"
+            onPress={() => setModalOrder(false)}
+          />
         </View>
       </Modal>
       <View style={globalStyles.cancelOrderButton}>
         <BtnApp
           texto="Cancelar Orden"
           newColor
+          border
           color="#FF7474"
           onPress={() => setModalOrder(true)}
         />

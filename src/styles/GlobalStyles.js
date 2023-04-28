@@ -125,9 +125,16 @@ const globalStyles = StyleSheet.create({
     gap: 10,
   },
   modalText: {
-    fontSize: 18,
+    fontSize: 24,
     fontFamily: 'Inter-Bold',
     textAlign: 'center',
+    marginBottom: 20,
+  },
+  modalTextQuestion: {
+    fontSize: 14,
+    fontFamily: 'Inter-Bold',
+    textAlign: 'center',
+    color: '#828282',
     marginBottom: 20,
   },
   secondSummaryContainer: {

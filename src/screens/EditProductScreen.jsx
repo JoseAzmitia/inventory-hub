@@ -101,20 +101,28 @@ function EditProductScreen({ navigation, route }) {
           <View style={globalStyles.modalContainer}>
             <Text style={globalStyles.modalText}>¿Confirma editar este producto?</Text>
             <BtnApp
-              texto="Sí, editar producto"
+              texto="Editar producto"
               onPress={() => {
                 setModalEdit(false);
                 handleSave();
               }}
             />
-            <BtnApp texto="Cancelar" newColor color="#FF7575" onPress={() => setModalEdit(false)} />
+            <BtnApp
+              texto="Cancelar"
+              newColor
+              border
+              color="#828282"
+              onPress={() => setModalEdit(false)}
+            />
           </View>
         </Modal>
         <Modal isVisible={modalDelete}>
           <View style={globalStyles.modalContainer}>
             <Text style={globalStyles.modalText}>¿Confirma eliminar este producto?</Text>
             <BtnApp
-              texto="Sí, eliminar producto"
+              texto="Eliminar producto"
+              newColor
+              color="#FF7474"
               onPress={() => {
                 setModalDelete(false);
                 handleDelete();
@@ -123,13 +131,20 @@ function EditProductScreen({ navigation, route }) {
             <BtnApp
               texto="Cancelar"
               newColor
-              color="#FF7575"
+              border
+              color="#828282"
               onPress={() => setModalDelete(false)}
             />
           </View>
         </Modal>
         <BtnApp texto="Guardar" onPress={() => setModalEdit(true)} />
-        <BtnApp texto="Eliminar" newColor color="#FF7575" onPress={() => setModalDelete(true)} />
+        <BtnApp
+          texto="Eliminar"
+          newColor
+          border
+          color="#FF7474"
+          onPress={() => setModalDelete(true)}
+        />
       </View>
     </View>
   );
