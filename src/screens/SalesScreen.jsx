@@ -19,7 +19,7 @@ function PantallaVentas() {
     // Verificar si existen órdenes en AsyncStorage
     AsyncStorage.getItem('orders')
       .then((storedOrders) => {
-        if (storedOrders) {
+        if (storedOrders && JSON.parse(storedOrders).length > 0) {
           // Si las órdenes existen, actualizar el estado con ellas
           setOrders(JSON.parse(storedOrders));
         } else {
