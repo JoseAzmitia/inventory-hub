@@ -41,11 +41,11 @@ function PantallaProductos({ navigation, route }) {
       const result = await getAllProductsByUser(userId);
       setProducts(result);
       setIsLoading(false);
-      console.log('api llamada en productsScreen');
+      console.log('Productos cargados');
     } catch (error) {
-      console.error(error);
       setIsLoading(false);
-      console.log('Función llamada en productsScreen');
+      setProducts([]);
+      console.log('No hay productos en el inventario');
     }
   };
 
