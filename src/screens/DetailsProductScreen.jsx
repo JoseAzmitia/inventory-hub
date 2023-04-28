@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useContext } from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import globalStyles from '../styles/GlobalStyles';
 import DetailsProductCard from '../components/DetailsProductCard';
 import BtnApp from '../components/Btn';
@@ -17,7 +17,6 @@ function DetailsProductScreen({ route, navigation }) {
 
   return (
     <View style={globalStyles.contenedor}>
-      <Text style={globalStyles.titleText}>Detalles del Producto</Text>
       <View style={globalStyles.detailsProductContainer}>
         <DetailsProductCard
           image={product.image}
@@ -32,7 +31,7 @@ function DetailsProductScreen({ route, navigation }) {
               icon="edit"
               newColor
               color="#828282"
-              onPress={() => navigation.navigate('EditProductScreen', { product })}
+              onPress={() => navigation.navigate('Editar producto', { product })}
             />
           </View>
           <View style={globalStyles.detailsButton}>

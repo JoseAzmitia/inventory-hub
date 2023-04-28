@@ -11,11 +11,26 @@ const Stack = createStackNavigator();
 
 function ProductStack() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#F8F8F8',
+          borderBottomColor: '#828282',
+          borderBottomWidth: 0.5,
+          height: 74.5,
+        },
+        headerTintColor: '#828282',
+        headerTitleStyle: {
+          fontSize: 20,
+          fontFamily: 'Inter-Regular',
+        },
+        headerTitleAlign: 'center',
+      }}
+    >
       <Stack.Screen name="Productos" component={Productos} />
-      <Stack.Screen name="AddProductScreen" component={AddProductScreen} />
-      <Stack.Screen name="EditProductScreen" component={EditProductScreen} />
-      <Stack.Screen name="DetailsProductScreen" component={DetailsProductScreen} />
+      <Stack.Screen name="Nuevo producto" component={AddProductScreen} />
+      <Stack.Screen name="Editar producto" component={EditProductScreen} />
+      <Stack.Screen name="Detalles del producto" component={DetailsProductScreen} />
     </Stack.Navigator>
   );
 }

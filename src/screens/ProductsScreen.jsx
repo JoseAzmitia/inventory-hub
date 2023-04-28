@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect, useContext } from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import globalStyles from '../styles/GlobalStyles';
 import ActionButtons from '../components/ActionButtons';
 import ProductCard from '../components/ProductCard';
@@ -21,7 +21,7 @@ function PantallaProductos({ navigation, route }) {
   }, [updateProductos]);
 
   const handleAddProductPress = () => {
-    navigation.navigate('AddProductScreen');
+    navigation.navigate('Nuevo producto');
   };
 
   useEffect(() => {
@@ -61,7 +61,6 @@ function PantallaProductos({ navigation, route }) {
 
   return (
     <View style={globalStyles.contenedor}>
-      <Text style={globalStyles.titleText}>Productos</Text>
       <ActionButtons
         actionText="Agregar"
         actionIcon="add-circle"
@@ -81,7 +80,7 @@ function PantallaProductos({ navigation, route }) {
                     image={product.image}
                     name={product.name}
                     price={product.price.toFixed(2)}
-                    onPress={() => navigation.navigate('DetailsProductScreen', { product })}
+                    onPress={() => navigation.navigate('Detalles del producto', { product })}
                   />
                 ))}
             </View>

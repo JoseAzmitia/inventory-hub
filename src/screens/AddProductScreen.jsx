@@ -11,6 +11,10 @@ import { createProduct } from '../services/productService';
 import { ImageTemplate } from '../utils/config';
 
 function AddProductScreen({ navigation }) {
+  React.useLayoutEffect(() => {
+    navigation.setOptions({ tabBarVisible: false });
+  }, [navigation]);
+
   const { userInfo } = useContext(AuthContext);
   const userId = userInfo.user;
   const image = ImageTemplate;
@@ -55,7 +59,6 @@ function AddProductScreen({ navigation }) {
 
   return (
     <View style={globalStyles.contenedor}>
-      <Text style={globalStyles.titleText}>Nuevo Producto</Text>
       <View style={globalStyles.addProductContainer}>
         <InputWithIcon
           title="Ingresa el nombre"

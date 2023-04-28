@@ -62,7 +62,6 @@ function EditProductScreen({ navigation, route }) {
 
   return (
     <View style={globalStyles.contenedor}>
-      <Text style={globalStyles.titleText}>Editar Producto</Text>
       <View style={globalStyles.addProductContainer}>
         <InputWithIcon
           title="Ingresa el nombre"
