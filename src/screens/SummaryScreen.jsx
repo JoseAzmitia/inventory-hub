@@ -56,7 +56,6 @@ function PantallaSumario() {
 
   return (
     <View style={globalStyles.contenedor}>
-      <Text style={globalStyles.titleText}>Sumario</Text>
       <SumarioCard
         title="Ordenes realizadas"
         quantity={summary.totalOrders}

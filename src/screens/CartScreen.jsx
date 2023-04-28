@@ -44,7 +44,6 @@ function PantallaCarrito({ navigation }) {
 
   return (
     <View style={globalStyles.contenedor}>
-      <Text style={globalStyles.titleText}>Carrito</Text>
       {carritoLength > 0 ? (
         <>
           <View style={globalStyles.botonCarrito}>

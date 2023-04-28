@@ -21,18 +21,31 @@ function TabNavigator() {
   return (
     <Tab.Navigator
       screenOptions={{
-        headerShown: false,
+        headerShown: true,
+        headerStyle: {
+          backgroundColor: '#F8F8F8',
+          borderBottomColor: '#828282',
+          borderBottomWidth: 0.5,
+          height: 74.5,
+        },
+        headerTintColor: '#828282',
+        headerTitleStyle: {
+          fontSize: 20,
+          fontFamily: 'Inter-Regular',
+        },
+        headerTitleAlign: 'center',
         tabBarShowLabel: false,
         tabBarStyle: { backgroundColor: '#FFFFFF' },
         tabBarInactiveTintColor: '#828282',
         tabBarActiveTintColor: '#27AE60',
+        tabBarHideOnKeyboard: true,
       }}
     >
       <Tab.Screen
         name="Sumario"
         component={PantallaSumario}
         options={{
-          title: 'Inicio',
+          title: 'Sumario',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="ios-home-outline" size={size} color={color} />
           ),
@@ -43,6 +56,7 @@ function TabNavigator() {
         component={ProductStack}
         options={{
           title: 'ProductStack',
+          headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="ios-grid-outline" size={size} color={color} />
           ),
@@ -53,6 +67,7 @@ function TabNavigator() {
         component={PantallaVentas}
         options={{
           title: 'Ventas',
+          headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="ios-analytics-outline" size={size} color={color} />
           ),
@@ -74,6 +89,7 @@ function TabNavigator() {
         component={Salir}
         options={{
           title: 'Salir',
+          headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="ios-log-in-outline" size={size} color={color} />
           ),
