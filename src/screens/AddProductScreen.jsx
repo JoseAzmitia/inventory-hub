@@ -1,6 +1,8 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useContext } from 'react';
 import { Text, View } from 'react-native';
+import * as Network from 'expo-network';
+import Toast from 'react-native-toast-message';
 import Modal from 'react-native-modal';
 import { AuthContext } from '../context/authContext';
 import globalStyles from '../styles/GlobalStyles';
@@ -24,7 +26,28 @@ function AddProductScreen({ navigation }) {
   const [price, setPrice] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
 
+  const checkConnectivity = async () => {
+    const networkState = await Network.getNetworkStateAsync();
+    if (!networkState.isConnected && !networkState.isInternetReachable) {
+      // Mostrar mensaje de alerta
+      Toast.show({
+        type: 'info',
+        text1: 'Conexión no detectada',
+        text2: 'Conéctate a internet para realizar esta acción',
+        visibilityTime: 3000,
+        autoHide: true,
+        position: 'bottom',
+      });
+      return Promise.resolve(false);
+    }
+    return Promise.resolve(true);
+  };
+
   const handleSaveProduct = async () => {
+    const isConnected = await checkConnectivity();
+    if (!isConnected) {
+      return;
+    }
     try {
       const product = {
         name: productName,

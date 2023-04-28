@@ -2,6 +2,8 @@
 import React, { useState, useContext } from 'react';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 import { StyleSheet, Text, View, Image } from 'react-native';
+import * as Network from 'expo-network';
+import Toast from 'react-native-toast-message';
 import { AuthContext } from '../context/authContext';
 import InputWithIcon from '../components/InputWithIcon';
 import BtnApp from '../components/Btn';
@@ -13,8 +15,22 @@ function PantallaLogin() {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     // Lógica para realizar la autenticación
+    const networkState = await Network.getNetworkStateAsync();
+
+    if (!networkState.isConnected && !networkState.isInternetReachable) {
+      // Mostrar mensaje de alerta
+      Toast.show({
+        type: 'info',
+        text1: 'Conexión no detectada',
+        text2: 'Conéctate a internet para iniciar sesión',
+        visibilityTime: 3000,
+        autoHide: true,
+        position: 'bottom',
+      });
+      return;
+    }
     login(email, password);
   };
 

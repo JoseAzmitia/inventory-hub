@@ -1,21 +1,31 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect, useContext } from 'react';
-import { View, ActivityIndicator } from 'react-native';
+import { View, ActivityIndicator, Image, Text, TouchableOpacity } from 'react-native';
+import * as Network from 'expo-network';
 import Toast from 'react-native-toast-message';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import globalStyles from '../styles/GlobalStyles';
 import SumarioCard from '../components/SumarioCard';
 import getSummaryByUserId from '../services/summaryService';
 import { AuthContext } from '../context/authContext';
 import BtnApp from '../components/Btn';
+import connection from '../assets/img/misc/Connection.png';
 
 function PantallaSumario() {
   const { userInfo } = useContext(AuthContext);
   const userId = userInfo.user;
   const [summary, setSummary] = useState(null);
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [connected, setConnected] = useState(true);
 
   // Definir la función fetchSummary en el scope global
   const fetchSummary = async () => {
+    const networkState = await Network.getNetworkStateAsync();
+    if (!networkState.isConnected && !networkState.isInternetReachable) {
+      setConnected(false);
+      return;
+    }
+    setConnected(true);
     const fetchedSummary = await getSummaryByUserId(userId);
     console.log('Api llamada en summaryScreen');
     setSummary(fetchedSummary);
@@ -43,7 +53,21 @@ function PantallaSumario() {
     fetchSummary();
   };
 
-  if (!summary) {
+  if (!connected) {
+    return (
+      <View style={globalStyles.contenedor}>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Image source={connection} style={{ width: 300, height: 270 }} />
+          <TouchableOpacity style={{ marginVertical: 45 }} onPress={fetchSummary}>
+            <MaterialIcons name="refresh" size={36} color="#62CEB4" />
+          </TouchableOpacity>
+          <Text style={globalStyles.modalTextQuestion}>Necesitas conexión a internet.</Text>
+        </View>
+      </View>
+    );
+  }
+
+  if (!summary && connected) {
     return (
       <View style={globalStyles.contenedor}>
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>

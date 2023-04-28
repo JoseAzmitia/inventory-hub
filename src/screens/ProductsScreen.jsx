@@ -1,12 +1,15 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect, useContext } from 'react';
-import { ScrollView, View, Image, ActivityIndicator } from 'react-native';
+import { ScrollView, View, Image, ActivityIndicator, TouchableOpacity, Text } from 'react-native';
+import * as Network from 'expo-network';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import globalStyles from '../styles/GlobalStyles';
 import ActionButtons from '../components/ActionButtons';
 import ProductCard from '../components/ProductCard';
 import { getAllProductsByUser } from '../services/productService';
 import { AuthContext } from '../context/authContext';
 import nothing from '../assets/img/misc/Nothing.png';
+import connection from '../assets/img/misc/Connection.png';
 
 function PantallaProductos({ navigation, route }) {
   const { userInfo } = useContext(AuthContext);
@@ -15,6 +18,7 @@ function PantallaProductos({ navigation, route }) {
   const [orderType, setOrderType] = useState(null);
   const [productsUpdated, setProductsUpdated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [connected, setConnected] = useState(true);
   const userId = userInfo.user;
   const { updateProductos } = route.params ?? {};
 
@@ -26,21 +30,28 @@ function PantallaProductos({ navigation, route }) {
     navigation.navigate('Nuevo producto');
   };
 
-  useEffect(() => {
-    const loadProducts = async () => {
-      try {
-        const result = await getAllProductsByUser(userId);
-        setProducts(result);
-        setIsLoading(false);
-        console.log('api llamada en productsScreen');
-      } catch (error) {
-        console.error(error);
-        setIsLoading(false);
-        console.log('Función llamada en productsScreen');
-      }
-    };
+  const loadProducts = async () => {
+    const networkState = await Network.getNetworkStateAsync();
+    if (!networkState.isConnected && !networkState.isInternetReachable) {
+      setConnected(false);
+      return;
+    }
+    setConnected(true);
+    try {
+      const result = await getAllProductsByUser(userId);
+      setProducts(result);
+      setIsLoading(false);
+      console.log('api llamada en productsScreen');
+    } catch (error) {
+      console.error(error);
+      setIsLoading(false);
+      console.log('Función llamada en productsScreen');
+    }
+  };
 
+  useEffect(() => {
     loadProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId, productsUpdated]);
 
   const handleOrderOptionPress = (value) => {
@@ -63,7 +74,21 @@ function PantallaProductos({ navigation, route }) {
     }
   };
 
-  if (isLoading) {
+  if (!connected) {
+    return (
+      <View style={globalStyles.contenedor}>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Image source={connection} style={{ width: 300, height: 270 }} />
+          <TouchableOpacity style={{ marginVertical: 45 }} onPress={loadProducts}>
+            <MaterialIcons name="refresh" size={36} color="#62CEB4" />
+          </TouchableOpacity>
+          <Text style={globalStyles.modalTextQuestion}>Necesitas conexión a internet.</Text>
+        </View>
+      </View>
+    );
+  }
+
+  if (isLoading && connected) {
     return (
       <View style={globalStyles.contenedor}>
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>

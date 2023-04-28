@@ -1,6 +1,8 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
+import * as Network from 'expo-network';
+import Toast from 'react-native-toast-message';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Modal from 'react-native-modal';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -12,7 +14,28 @@ function OrderCompleteScreen({ navigation, route }) {
   const { orderId } = route.params;
   const [modalOrder, setModalOrder] = useState(false);
 
+  const checkConnectivity = async () => {
+    const networkState = await Network.getNetworkStateAsync();
+    if (!networkState.isConnected && !networkState.isInternetReachable) {
+      // Mostrar mensaje de alerta
+      Toast.show({
+        type: 'info',
+        text1: 'Conexión no detectada',
+        text2: 'Conéctate a internet para realizar esta acción',
+        visibilityTime: 3000,
+        autoHide: true,
+        position: 'bottom',
+      });
+      return Promise.resolve(false);
+    }
+    return Promise.resolve(true);
+  };
+
   const handleDeleteOrder = async () => {
+    const isConnected = await checkConnectivity();
+    if (!isConnected) {
+      return;
+    }
     try {
       await deleteOrder(orderId);
       const orders = JSON.parse(await AsyncStorage.getItem('orders')) || [];
