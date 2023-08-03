@@ -3,10 +3,10 @@
 ## Descripción
 Inventory-Hub es una aplicación móvil de manejo de inventarios desarrollada con react native.
 
-## Navegación
+## Arquitectura
 ![Arquitectura](https://github.com/JoseAzmitia/inventory-hub/assets/85298893/4db9d08d-16d5-468e-91a6-388a307f4f74)
 
-Navegación
+## Navegación
 ![Navegación](https://github.com/JoseAzmitia/inventory-hub/assets/85298893/c68a5b39-166f-41d7-ada0-71ed37e97bd6)
 
 ## Diseño en Figma
